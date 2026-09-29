@@ -6,6 +6,7 @@
 (function () {
   "use strict";
 
+  window.__jmdMain = true;
   var CFG = window.JMD_CONFIG || {};
   var PHONE = (CFG.phone && CFG.phone.whatsapp) || "34687111168";
   var root = document.documentElement;
@@ -603,7 +604,7 @@
 
   if (!hasGSAP || REDUCE) {
     // Sin GSAP o con movimiento reducido: todo visible, sin animaciones de scroll.
-    root.classList.remove("js");
+    root.classList.remove("anim");
     markReady();
     return;
   }
@@ -619,6 +620,27 @@
     gsap.ticker.lagSmoothing(0);
   }
 
+  /* Reveals al hacer scroll (por lotes, con stagger) */
+  function initReveals() {
+  if (!$("[data-reveal]")) return;
+  gsap.set("[data-reveal]:not(.bp)", { y: 40, opacity: 0 });
+  ScrollTrigger.batch("[data-reveal]:not(.bp)", {
+    start: "top 88%",
+    once: true,
+    onEnter: function (els) {
+      gsap.to(els, { y: 0, opacity: 1, duration: 1, ease: "expo.out", stagger: 0.08, overwrite: true, clearProps: "transform" });
+    }
+  });
+  // Tarjetas de embarque: entrada con giro
+  if (!$(".bp[data-reveal]")) return;
+  gsap.set(".bp[data-reveal]", { y: 40, opacity: 0, rotateX: -25, transformOrigin: "50% 0%" });
+  ScrollTrigger.batch(".bp[data-reveal]", {
+    start: "top 90%",
+    once: true,
+    onEnter: function (els) { gsap.to(els, { rotateX: 0, y: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.09, overwrite: true, clearProps: "transform" }); }
+  });
+  }
+
   if (!$(".hero")) {
     // Páginas interiores: solo reveals genéricos
     initReveals();
@@ -629,9 +651,9 @@
   var heroTl = gsap.timeline({ defaults: { ease: "expo.out" } });
   heroTl
     .fromTo(".hero__img", { scale: 1.18 }, { scale: 1, duration: 2.4, ease: "power3.out" }, 0)
-    .fromTo(".hero__title .w", { yPercent: 110, rotate: 4, opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, duration: 1.1, stagger: 0.07 }, 0.15)
-    .fromTo("[data-hero='fade']", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.12 }, 0.55)
-    .fromTo("[data-hero='route']", { y: 40, opacity: 0, rotateX: 18 }, { y: 0, opacity: 1, rotateX: 0, duration: 1.3 }, 0.5);
+    .fromTo(".hero__title .w", { yPercent: 110, rotate: 4, opacity: 0.01 }, { yPercent: 0, rotate: 0, opacity: 1, duration: 1.1, stagger: 0.07 }, 0.15)
+    .fromTo("[data-hero='fade']", { y: 24, opacity: 0.01 }, { y: 0, opacity: 1, duration: 1, stagger: 0.12 }, 0.55)
+    .fromTo("[data-hero='route']", { y: 40, opacity: 0.01, rotateX: 18 }, { y: 0, opacity: 1, rotateX: 0, duration: 1.3 }, 0.5);
 
   /* Ruta MAD → LIM: trazo + avión siguiendo la curva */
   (function route() {
@@ -658,6 +680,11 @@
     });
   })();
 
+  /* Efectos de scroll: se preparan en un momento libre para no bloquear la carga */
+  var runLater = window.requestIdleCallback || function (cb) { return setTimeout(cb, 120); };
+  runLater(function () {
+  initReveals();
+
   /* Parallax del fondo del hero */
   gsap.to("[data-parallax]", {
     yPercent: 14, ease: "none",
@@ -668,28 +695,6 @@
     scrollTrigger: { trigger: ".hero", start: "40% top", end: "bottom top", scrub: true }
   });
 
-  initReveals();
-
-  /* Reveals al hacer scroll (por lotes, con stagger) */
-  function initReveals() {
-  if (!$("[data-reveal]")) return;
-  gsap.set("[data-reveal]:not(.bp)", { y: 40, opacity: 0 });
-  ScrollTrigger.batch("[data-reveal]:not(.bp)", {
-    start: "top 88%",
-    once: true,
-    onEnter: function (els) {
-      gsap.to(els, { y: 0, opacity: 1, duration: 1, ease: "expo.out", stagger: 0.08, overwrite: true, clearProps: "transform" });
-    }
-  });
-  // Tarjetas de embarque: entrada con giro
-  if (!$(".bp[data-reveal]")) return;
-  gsap.set(".bp[data-reveal]", { y: 40, opacity: 0, rotateX: -25, transformOrigin: "50% 0%" });
-  ScrollTrigger.batch(".bp[data-reveal]", {
-    start: "top 90%",
-    once: true,
-    onEnter: function (els) { gsap.to(els, { rotateX: 0, y: 0, opacity: 1, duration: 1.1, ease: "expo.out", stagger: 0.09, overwrite: true, clearProps: "transform" }); }
-  });
-  }
 
   /* Contadores (solo datos reales) */
   $$("[data-count]").forEach(function (el) {
@@ -767,6 +772,9 @@
       }
     });
   })();
+
+  ScrollTrigger.refresh();
+  }, { timeout: 1200 });
 
   window.addEventListener("load", function () { ScrollTrigger.refresh(); });
 })();
