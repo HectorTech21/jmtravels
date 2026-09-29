@@ -1,0 +1,91 @@
+<!--page {
+  "title": "Política de privacidad · JMD Travesías por el Mundo",
+  "description": "Política de privacidad de JMD Travesías por el Mundo S.L. conforme al RGPD y a la LOPDGDD: finalidades, legitimación, derechos y reclamación ante la AEPD.",
+  "priority": 0.3
+}-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{> head}}
+</head>
+<body class="legal-page">
+{{> icons}}
+{{> header}}
+<main id="main">
+  <section class="legal-hero">
+    <div class="container">
+      <p class="eyebrow eyebrow--gold">Información legal</p>
+      <h1>Política de privacidad</h1>
+      <p>Conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD).</p>
+    </div>
+  </section>
+  <section class="legal">
+    <div class="container legal__body">
+      <h2>1. Responsable del tratamiento</h2>
+      {{> legal-data}}
+
+      <h2>2. Cómo funciona esta web con tus datos</h2>
+      <p>Esta web <strong>no almacena ni envía a ningún servidor</strong> los datos que escribes en los cotizadores o en el formulario de contacto. Al pulsar el botón de envío, tu navegador abre WhatsApp{{#if site.email}} o tu programa de correo{{/if}} con un mensaje ya redactado, y eres tú quien decide enviarlo. A partir de ese momento tratamos los datos que nos hayas enviado según esta política.</p>
+
+      <h2>3. Qué datos tratamos</h2>
+      <ul>
+        <li>Datos identificativos y de contacto: nombre, teléfono y, si nos lo facilitas, email.</li>
+        <li>Datos de tu consulta: destino, fechas, número de pasajeros, datos del envío (peso, bultos, distrito de entrega y descripción del contenido) y el mensaje que nos escribas.</li>
+        <li>Si contratas un servicio: los datos necesarios para emitir billetes, reservas, seguros o envíos (por ejemplo, datos del documento de identidad o pasaporte de los viajeros, o datos del destinatario del envío) y los de facturación.</li>
+      </ul>
+
+      <h2>4. Finalidades y legitimación</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Finalidad</th><th scope="col">Base jurídica</th></tr></thead>
+          <tbody>
+            <tr><td>Responder a tus consultas y enviarte presupuestos</td><td>Tu consentimiento y la aplicación de medidas precontractuales a petición tuya (art. 6.1.a y 6.1.b RGPD)</td></tr>
+            <tr><td>Gestionar la contratación de vuelos, reservas, seguros, traslados y envíos de paquetería</td><td>Ejecución del contrato (art. 6.1.b RGPD)</td></tr>
+            <tr><td>Cumplir obligaciones legales (fiscales, contables, de consumo, turismo y aduanas)</td><td>Obligación legal (art. 6.1.c RGPD)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>No elaboramos perfiles ni tomamos decisiones automatizadas, y no enviamos comunicaciones comerciales sin tu consentimiento previo.</p>
+
+      <h2>5. Plazo de conservación</h2>
+      <p>Conservamos los datos de las consultas durante el tiempo necesario para atenderlas. Los datos de los servicios contratados se conservan mientras dure la relación y, después, durante los plazos legales de prescripción de responsabilidades y los exigidos por la normativa fiscal y contable.</p>
+
+      <h2>6. Destinatarios</h2>
+      <p>Solo comunicamos tus datos cuando es necesario para prestar el servicio que solicitas o por obligación legal:</p>
+      <ul>
+        <li>Proveedores de los servicios contratados: aerolíneas, establecimientos de alojamiento, aseguradoras, empresas de traslados y operadores de transporte y entrega de paquetería.</li>
+        <li>Administraciones públicas y autoridades aduaneras, cuando lo exija la ley.</li>
+        <li>Proveedores tecnológicos que nos prestan servicios como encargados del tratamiento.</li>
+      </ul>
+
+      <h2>7. Transferencias internacionales</h2>
+      <p>Los vuelos y envíos a países de fuera del Espacio Económico Europeo (por ejemplo, Perú, Colombia, Venezuela, Ecuador, República Dominicana, Bolivia, Paraguay o Argentina) exigen comunicar datos a proveedores y autoridades de esos países. Estas transferencias se realizan por ser necesarias para la ejecución del contrato que solicitas (art. 49.1.b RGPD).</p>
+      <p>Si nos escribes por WhatsApp, el servicio lo presta WhatsApp Ireland Ltd. (grupo Meta), que puede tratar datos fuera del EEE conforme a su propia política de privacidad.</p>
+
+      <h2>8. Servicios de terceros al navegar</h2>
+      <p>Para mostrar la web, tu navegador se conecta con:</p>
+      <ul>
+        <li><strong>Google Fonts</strong> (Google Ireland Ltd.), para cargar las tipografías.</li>
+        <li><strong>Unsplash</strong>, para cargar las fotografías.</li>
+        <li><strong>Google Maps</strong>, solo si pulsas «Cargar mapa interactivo».</li>
+      </ul>
+      <p>En esas conexiones el proveedor recibe tu dirección IP y datos técnicos del navegador. Consulta la <a href="/cookies.html">política de cookies</a> para más información.</p>
+
+      <h2>9. Tus derechos</h2>
+      <p>Puedes ejercer tus derechos de <strong>acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad</strong>, y retirar en cualquier momento el consentimiento prestado, sin que ello afecte a la licitud del tratamiento anterior. Para ello, dirígete a {{ site.legalName }} en {{ site.address.full }}{{#if site.email}}, o escribe a <a href="mailto:{{ site.email }}">{{ site.email }}</a>{{/if}}, indicando el derecho que ejerces y acreditando tu identidad.</p>
+      <p>Si consideras que el tratamiento no se ajusta a la normativa, puedes presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong>, C/ Jorge Juan 6, 28001 Madrid, <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
+
+      <h2>10. Menores de edad</h2>
+      <p>Los menores de 14 años no pueden facilitarnos datos sin el consentimiento de sus padres o tutores (art. 7 LOPDGDD). Los datos de menores que viajen se tratan únicamente para gestionar su viaje, facilitados por sus representantes legales.</p>
+
+      <h2>11. Seguridad</h2>
+      <p>Aplicamos medidas técnicas y organizativas adecuadas para proteger tus datos frente a pérdida, uso indebido o acceso no autorizado.</p>
+
+      <p><em>Última actualización: septiembre de {{ year }}.</em></p>
+    </div>
+  </section>
+</main>
+{{> footer}}
+{{> scripts}}
+</body>
+</html>

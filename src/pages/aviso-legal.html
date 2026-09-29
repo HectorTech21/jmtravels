@@ -1,0 +1,61 @@
+<!--page {
+  "title": "Aviso legal · JMD Travesías por el Mundo",
+  "description": "Aviso legal de JMD Travesías por el Mundo S.L. (CIF B88982244), agencia de viajes con licencia CICMA 4321 en Madrid.",
+  "priority": 0.3
+}-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{> head}}
+</head>
+<body class="legal-page">
+{{> icons}}
+{{> header}}
+<main id="main">
+  <section class="legal-hero">
+    <div class="container">
+      <p class="eyebrow eyebrow--gold">Información legal</p>
+      <h1>Aviso legal</h1>
+      <p>Información general exigida por la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE).</p>
+    </div>
+  </section>
+  <section class="legal">
+    <div class="container legal__body">
+      <h2>1. Datos identificativos del titular</h2>
+      <p>En cumplimiento del artículo 10 de la LSSI-CE, se informa de los datos del titular de este sitio web:</p>
+      {{> legal-data}}
+
+      <h2>2. Objeto</h2>
+      <p>Este sitio web ofrece información sobre los servicios de {{ site.brandName }} como agencia de viajes y multiservicios: vuelos a Latinoamérica con 2 maletas de 23 kg, paquetería puerta a puerta Madrid → Lima (Perú), hoteles y paquetes vacacionales, seguros de viaje, asesoría de documentación de viaje, traslados y grupos.</p>
+      <p>La web no permite contratar ni pagar en línea. Los cotizadores y el formulario de contacto únicamente preparan un mensaje que el usuario decide enviar por WhatsApp{{#if site.email}} o por email{{/if}}. Cualquier contratación se formaliza con la agencia de forma personalizada.</p>
+
+      <h2>3. Condiciones de uso</h2>
+      <p>El acceso a este sitio web es gratuito y atribuye la condición de usuario, que acepta este aviso legal. El usuario se compromete a hacer un uso adecuado de los contenidos, conforme a la ley, la buena fe y el orden público, y a no emplearlos para actividades ilícitas o que puedan dañar los derechos de terceros o el funcionamiento del sitio.</p>
+
+      <h2>4. Información sobre precios</h2>
+      <p>Los precios de vuelos, envíos y demás servicios no se publican en esta web porque dependen de fechas, disponibilidad, tarifas de proveedores y características de cada envío. Se indican como «Consultar» y se facilitan de forma personalizada. Las cotizaciones no son vinculantes hasta su confirmación expresa por la agencia.</p>
+
+      <h2>5. Propiedad intelectual e industrial</h2>
+      <p>El logotipo, la marca «JMD Travesías por el Mundo», los textos y el diseño de este sitio son titularidad de {{ site.legalName }} o se usan con autorización. Queda prohibida su reproducción, distribución o transformación sin autorización expresa.</p>
+      <p>Las fotografías proceden de Unsplash y se utilizan conforme a la Licencia Unsplash. Las tipografías se usan bajo la SIL Open Font License.</p>
+
+      <h2>6. Responsabilidad</h2>
+      <p>La agencia procura que la información publicada sea correcta y esté actualizada, pero no garantiza la ausencia de errores ni la disponibilidad permanente del sitio. La información sobre equipaje, documentación o normativa aduanera es orientativa: las condiciones definitivas son las de cada aerolínea, proveedor o autoridad competente y se confirman antes de cada contratación.</p>
+
+      <h2>7. Enlaces a terceros</h2>
+      <p>Este sitio contiene enlaces a servicios de terceros (WhatsApp, Google Maps, Unsplash). {{ site.legalName }} no controla ni se responsabiliza de sus contenidos ni de sus políticas, que se rigen por sus propias condiciones.</p>
+
+      <h2>8. Protección de datos y cookies</h2>
+      <p>El tratamiento de datos personales se explica en la <a href="/privacidad.html">política de privacidad</a> y el uso de cookies en la <a href="/cookies.html">política de cookies</a>.</p>
+
+      <h2>9. Legislación aplicable y jurisdicción</h2>
+      <p>Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales que correspondan conforme a la ley; cuando el usuario tenga la condición de consumidor, serán competentes los de su domicilio.</p>
+
+      <p><em>Última actualización: septiembre de {{ year }}.</em></p>
+    </div>
+  </section>
+</main>
+{{> footer}}
+{{> scripts}}
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!--page {
+  "title": "Política de cookies · JMD Travesías por el Mundo",
+  "description": "Política de cookies de JMD Travesías por el Mundo: esta web no usa cookies propias de análisis ni publicidad.",
+  "priority": 0.2
+}-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{> head}}
+</head>
+<body class="legal-page">
+{{> icons}}
+{{> header}}
+<main id="main">
+  <section class="legal-hero">
+    <div class="container">
+      <p class="eyebrow eyebrow--gold">Información legal</p>
+      <h1>Política de cookies</h1>
+      <p>Información conforme al artículo 22.2 de la LSSI-CE y a la Guía sobre el uso de las cookies de la AEPD.</p>
+    </div>
+  </section>
+  <section class="legal">
+    <div class="container legal__body">
+      <h2>1. ¿Qué son las cookies?</h2>
+      <p>Las cookies son pequeños archivos que un sitio web guarda en tu navegador para recordar información sobre tu visita. Otras tecnologías similares (como el almacenamiento local) funcionan de forma parecida.</p>
+
+      <h2>2. Cookies que usa esta web</h2>
+      <p><strong>Esta web no instala cookies propias</strong> ni utiliza herramientas de analítica, publicidad o redes sociales, y no guarda información en el almacenamiento local de tu navegador. Por eso no te mostramos un banner de consentimiento.</p>
+
+      <h2>3. Servicios de terceros</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Servicio</th><th scope="col">Cuándo se usa</th><th scope="col">Cookies</th></tr></thead>
+          <tbody>
+            <tr><td>Google Fonts (Google Ireland Ltd.)</td><td>Al cargar la página, para mostrar las tipografías</td><td>No instala cookies. Recibe tu IP para servir las fuentes.</td></tr>
+            <tr><td>Unsplash</td><td>Al cargar la página, para mostrar las fotografías</td><td>Las imágenes se sirven desde su red de distribución; recibe tu IP.</td></tr>
+            <tr><td>Google Maps (Google Ireland Ltd.)</td><td><strong>Solo si pulsas «Cargar mapa interactivo»</strong></td><td>Puede instalar cookies propias de Google. Más información en <a href="https://policies.google.com/technologies/cookies?hl=es" target="_blank" rel="noopener">policies.google.com</a>.</td></tr>
+            <tr><td>WhatsApp (Meta)</td><td>Solo si pulsas un botón de WhatsApp, que te lleva a su servicio</td><td>Se rige por la política de WhatsApp.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>El mapa de Google no se carga hasta que tú lo pides: pulsar el botón equivale a aceptar la conexión con Google Maps. Siempre puedes usar el enlace «Cómo llegar (Google Maps)» en su lugar.</p>
+
+      <h2>4. Cómo gestionar o eliminar cookies</h2>
+      <p>Puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647?hl=es" target="_blank" rel="noopener">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+        <li><a href="https://support.microsoft.com/es-es/microsoft-edge" target="_blank" rel="noopener">Microsoft Edge</a></li>
+      </ul>
+
+      <h2>5. Cambios en esta política</h2>
+      <p>Si en el futuro incorporamos cookies que requieran tu consentimiento (por ejemplo, de analítica), actualizaremos esta política y te pediremos el consentimiento antes de instalarlas.</p>
+
+      <p>Para cualquier duda sobre esta política, contacta con {{ site.legalName }} en el <a href="{{ site.phone.tel }}">{{ site.phone.display }}</a>{{#if site.email}} o en <a href="mailto:{{ site.email }}">{{ site.email }}</a>{{/if}}.</p>
+      <p><em>Última actualización: septiembre de {{ year }}.</em></p>
+    </div>
+  </section>
+</main>
+{{> footer}}
+{{> scripts}}
+</body>
+</html>
