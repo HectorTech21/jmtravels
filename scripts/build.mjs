@@ -14,7 +14,7 @@
  *
  * Metadatos de página: primera línea de cada plantilla  <!--page { ...json... }-->
  */
-import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync, rmSync, mkdirSync, cpSync } from "node:fs";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
@@ -315,6 +315,19 @@ writeFileSync(
   join(ROOT, "CREDITS.md"),
   `# Créditos\n\n> Archivo generado por \`npm run build\` desde \`src/data/photos.json\`.\n\n## Fotografías\n\nTodas las fotografías proceden de [Unsplash](https://unsplash.com) y se usan bajo la [Licencia Unsplash](https://unsplash.com/license) (uso gratuito, comercial incluido, sin atribución obligatoria; se acredita igualmente por cortesía). Se sirven desde \`images.unsplash.com\` con parámetros de tamaño y calidad (\`?auto=format&fit=crop&w=…&q=75\`).\n\n| Clave | Descripción (alt) | Autor | Foto |\n|---|---|---|---|\n${credits}\n\n## Tipografías\n\n- [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [DM Sans](https://fonts.google.com/specimen/DM+Sans) y [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — Google Fonts, SIL Open Font License 1.1.\n\n## Librerías\n\n- [GSAP](https://gsap.com) 3.15.0 + ScrollTrigger — GreenSock Standard License (uso gratuito).\n- [Lenis](https://github.com/darkroomengineering/lenis) 1.3.26 — MIT.\n\n## Logotipo\n\n- Logotipo de ${site.legalName}, propiedad de la empresa (\`assets/img/logo-original.jpg\`).\n`
 );
+
+/* ---------- public/: copia publicable (Vercel y hostings que esperan esa carpeta) ---------- */
+const PUBLIC = join(ROOT, "public");
+rmSync(PUBLIC, { recursive: true, force: true });
+mkdirSync(PUBLIC);
+const publishable = [
+  ...built.map((b) => b.file),
+  "assets", "favicon.ico", "apple-touch-icon.png", "og-image.png",
+  "robots.txt", "sitemap.xml", "site.webmanifest", "CREDITS.md"
+];
+for (const f of publishable) {
+  if (existsSync(join(ROOT, f))) cpSync(join(ROOT, f), join(PUBLIC, f), { recursive: true });
+}
 
 console.log(`✔ Build completado: ${built.map((b) => b.file).join(", ")} + sitemap.xml, robots.txt, site.webmanifest, CREDITS.md`);
 for (const w of warnings) console.log(`  TODO → ${w}`);

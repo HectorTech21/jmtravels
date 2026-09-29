@@ -32,7 +32,7 @@ scripts/generate-assets.mjs  ← regenera favicons y og-image (opcional, requier
 
 1. Edita los datos en `assets/js/config.js` o los textos en `src/`.
 2. Ejecuta `npm run build` (Node ≥ 18, sin dependencias). Genera el HTML y pasa las comprobaciones.
-3. Sube los cambios. La web se sirve tal cual desde la raíz del repositorio: no requiere paso de build en el hosting.
+3. Sube los cambios. El build también copia la web publicable a `public/` (carpeta que usa Vercel por defecto; no se versiona). Otros hostings pueden servir directamente la raíz del repositorio.
 
 ## Pendiente (TODO)
 
