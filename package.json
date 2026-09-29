@@ -1,0 +1,14 @@
+{
+  "name": "jmd-travesias-por-el-mundo",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Web estática de JMD Travesías por el Mundo — Agencia de Viajes & Multiservicios (Madrid).",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs && node scripts/check.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

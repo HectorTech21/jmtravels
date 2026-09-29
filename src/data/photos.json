@@ -1,0 +1,111 @@
+{
+  "_comment": "Fotos de Unsplash (Unsplash License). IDs, autores y URLs verificados contra el dataset oficial de Unsplash (unsplash-research-dataset-lite, junio 2026). Los alt describen lo que realmente aparece en cada foto.",
+  "hero": {
+    "src": "https://images.unsplash.com/photo-1428585020518-006f62259c2c",
+    "w": 4928, "h": 3264,
+    "alt": "Silueta de un avión volando bajo un cielo de nubes densas",
+    "author": "Gabriel Garcia Marengo", "username": "gabrielgm", "page": "https://unsplash.com/photos/9jFECJnjLT8"
+  },
+  "window": {
+    "src": "https://images.unsplash.com/photo-1526539535687-97010dfc3e08",
+    "w": 4032, "h": 3024,
+    "alt": "Atardecer visto desde la ventanilla de un avión sobre el mar",
+    "author": "Lucas Myers", "username": "unthunk", "page": "https://unsplash.com/photos/xCTAd2NN4I0"
+  },
+  "clouds": {
+    "src": "https://images.unsplash.com/photo-1571983890297-6dbcecd1bc26",
+    "w": 3024, "h": 4032,
+    "alt": "Nubes vistas desde la ventanilla de un avión",
+    "author": "Vadim Sadovski", "username": "vadimsadovski", "page": "https://unsplash.com/photos/5MIyBZMf7us"
+  },
+  "suitcases": {
+    "src": "https://images.unsplash.com/photo-1479888230021-c24f136d849f",
+    "w": 6000, "h": 4000,
+    "alt": "Pila de maletas de viaje de varios colores",
+    "author": "Erwan Hesry", "username": "erwanhesry", "page": "https://unsplash.com/photos/Q34YB7yjAxA"
+  },
+  "beach": {
+    "src": "https://images.unsplash.com/photo-1434600705575-4285a88363a8",
+    "w": 5834, "h": 3879,
+    "alt": "Playa tropical de aguas turquesa con una persona nadando",
+    "author": "Cosmic Timetraveler", "username": "cosmictimetraveler", "page": "https://unsplash.com/photos/gweOVL1QjPo"
+  },
+  "machupicchu": {
+    "src": "https://images.unsplash.com/photo-1525915818695-5b1a033247f1",
+    "w": 6000, "h": 4000,
+    "alt": "Ruinas de Machu Picchu entre niebla y montañas, Perú",
+    "author": "Willian Justen de Vasconcellos", "username": "willianjusten", "page": "https://unsplash.com/photos/g_1mAmAAG0k"
+  },
+  "lima": {
+    "src": "https://images.unsplash.com/photo-1508529044574-59120aab8253",
+    "w": 4000, "h": 6000,
+    "alt": "Atardecer dorado sobre el mar en la región de Lima, Perú",
+    "author": "Ernesto Leon", "username": "thekidflame", "page": "https://unsplash.com/photos/S5Khu-gxAlY"
+  },
+  "limacoast": {
+    "src": "https://images.unsplash.com/photo-1551818653-ad8adfb85fef",
+    "w": 3000, "h": 2250,
+    "alt": "Vista aérea de la costa de Playa Honda, Lima, Perú",
+    "author": "Andres Urena", "username": "andresurena", "page": "https://unsplash.com/photos/0-YbTNu0xtY"
+  },
+  "cusco": {
+    "src": "https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d",
+    "w": 3838, "h": 3838,
+    "alt": "Vista aérea de Machu Picchu, en la región de Cusco, Perú",
+    "author": "Babak Fakhamzadeh", "username": "mastababa", "page": "https://unsplash.com/photos/PO7CGnoDFUI"
+  },
+  "bogota": {
+    "src": "https://images.unsplash.com/photo-1486787284432-3749cdce2660",
+    "w": 6000, "h": 3376,
+    "alt": "Amanecer sobre colinas verdes en La Serrana, Colombia",
+    "author": "Dan Gold", "username": "danielcgold", "page": "https://unsplash.com/photos/Uuh0K9YtNM8"
+  },
+  "medellin": {
+    "src": "https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3",
+    "w": 5870, "h": 3913,
+    "alt": "Vista aérea de los lagos e islas de Guatapé, Antioquia, Colombia",
+    "author": "Jan Kronies", "username": "jankronies", "page": "https://unsplash.com/photos/iVCQpLfXZJQ"
+  },
+  "caracas": {
+    "src": "https://images.unsplash.com/photo-1538964173425-93884d739596",
+    "w": 2243, "h": 2992,
+    "alt": "Vista aérea de Cayo Sombrero, playa del Caribe venezolano",
+    "author": "lalo Hernandez", "username": "lalonchera", "page": "https://unsplash.com/photos/Amo081zdJsI"
+  },
+  "valencia": {
+    "src": "https://images.unsplash.com/photo-1548704686-f0a484c1bd67",
+    "w": 2166, "h": 3850,
+    "alt": "Vista aérea de la costa azul de Choroní, Aragua, Venezuela",
+    "author": "lalo Hernandez", "username": "lalonchera", "page": "https://unsplash.com/photos/LSaWlsj1IaQ"
+  },
+  "quito": {
+    "src": "https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7",
+    "w": 5138, "h": 3602,
+    "alt": "Colibrí esmeralda andino junto a flores rosas en Tandayapa, cerca de Quito, Ecuador",
+    "author": "Chris Charles", "username": "licole", "page": "https://unsplash.com/photos/jQI1tnK6OEU"
+  },
+  "guayaquil": {
+    "src": "https://images.unsplash.com/photo-1464703798045-7a86b08ced50",
+    "w": 5052, "h": 3368,
+    "alt": "Vista aérea de la playa de Santa Marianita, en la costa de Ecuador",
+    "author": "Andres Medina", "username": "kiyoshi_jpg", "page": "https://unsplash.com/photos/FKbg8jbLMQ8"
+  },
+  "santodomingo": {
+    "src": "https://images.unsplash.com/photo-1421284621639-884f4129b61d",
+    "w": 4752, "h": 3168,
+    "alt": "Palmeras bajo un cielo con nubes en Punta Cana, República Dominicana",
+    "author": "Thomas Lefebvre", "username": "magellol", "page": "https://unsplash.com/photos/V63oM8OPJSo"
+  },
+  "santacruz": {
+    "src": "https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6",
+    "w": 3988, "h": 2720,
+    "alt": "Cielo reflejado como un espejo en el Salar de Uyuni, Bolivia",
+    "author": "Susanne Feldt", "username": "susannefeldt", "page": "https://unsplash.com/photos/SIoHky3TPeo"
+  },
+  "buenosaires": {
+    "src": "https://images.unsplash.com/photo-1510792047925-c55a452bbad7",
+    "w": 3991, "h": 2343,
+    "alt": "Embarcación blanca sobre el agua en Buenos Aires, Argentina",
+    "author": "Willian Justen de Vasconcellos", "username": "willianjusten", "page": "https://unsplash.com/photos/ULuNCCJj3pg"
+  }
+}
