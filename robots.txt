@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /scripts/
+
+# TODO: añade "Sitemap: <SITE_URL>/sitemap.xml" definiendo SITE_URL y ejecutando npm run build
