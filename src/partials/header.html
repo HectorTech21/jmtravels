@@ -1,0 +1,66 @@
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+
+<div class="topbar">
+  <div class="container topbar__inner">
+    <a class="topbar__item" href="{{ site.phone.tel }}">
+      <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+      <span>{{ site.phone.display }}</span>
+    </a>
+    <span class="topbar__item topbar__item--license">
+      <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+      <span>Agencia de viajes · Licencia {{ site.license }}</span>
+    </span>
+    <span class="topbar__item topbar__item--wide">
+      <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+      <span>{{ site.address.streetShort }} · {{ site.address.city }}</span>
+    </span>
+    {{#if site.hours}}<span class="topbar__item topbar__item--wide">
+      <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>
+      <span>{{ site.hours }}</span>
+    </span>{{/if}}
+    {{#if site.email}}<a class="topbar__item topbar__item--wide" href="mailto:{{ site.email }}">
+      <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+      <span>{{ site.email }}</span>
+    </a>{{/if}}
+  </div>
+</div>
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="/" aria-label="{{ site.brandName }} — inicio">
+      <span class="brand__logo"><img src="/assets/img/logo-160.webp" srcset="/assets/img/logo-160.webp 1x, /assets/img/logo-320.webp 2x" width="160" height="160" alt=""></span>
+      <span class="brand__text">
+        <span class="brand__name">JMD Travesías</span>
+        <span class="brand__sub">por el Mundo</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="menu" aria-label="Principal" data-menu>
+      <ul class="nav__list">
+        <li><a class="nav__link" href="{{#if page.isHome}}{{else}}/{{/if}}#cotizador">Vuelos</a></li>
+        <li><a class="nav__link" href="{{#if page.isHome}}{{else}}/{{/if}}#destinos">Destinos</a></li>
+        <li><a class="nav__link" href="{{#if page.isHome}}{{else}}/{{/if}}#paqueteria">Paquetería</a></li>
+        <li><a class="nav__link" href="{{#if page.isHome}}{{else}}/{{/if}}#servicios">Servicios</a></li>
+        <li><a class="nav__link" href="{{#if page.isHome}}{{else}}/{{/if}}#oficina">Oficina</a></li>
+        <li><a class="nav__link" href="{{#if page.isHome}}{{else}}/{{/if}}#faq">FAQ</a></li>
+        <li><a class="nav__link" href="{{#if page.isHome}}{{else}}/{{/if}}#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav__extra">
+        <a class="btn btn--wa" href="{{ wa.generic }}" target="_blank" rel="noopener" data-wa="generic">
+          <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp
+        </a>
+        <a class="nav__phone" href="{{ site.phone.tel }}">{{ site.phone.display }}</a>
+        <p class="nav__slogan">{{ site.slogan }}</p>
+      </div>
+    </nav>
+
+    <a class="btn btn--wa btn--sm header__cta" href="{{ wa.generic }}" target="_blank" rel="noopener" data-wa="generic" data-magnetic>
+      <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span>
+    </a>
+    <button class="burger" type="button" aria-controls="menu" aria-expanded="false" data-burger>
+      <span class="burger__lines" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="sr-only">Abrir menú</span>
+    </button>
+  </div>
+</header>

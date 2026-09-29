@@ -1,0 +1,67 @@
+<footer class="footer">
+  <div class="footer__glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand brand--footer" href="/" aria-label="{{ site.brandName }} — inicio">
+          <span class="brand__logo"><img src="/assets/img/logo-160.webp" srcset="/assets/img/logo-160.webp 1x, /assets/img/logo-320.webp 2x" width="160" height="160" alt="" loading="lazy"></span>
+          <span class="brand__text">
+            <span class="brand__name">JMD Travesías</span>
+            <span class="brand__sub">por el Mundo</span>
+          </span>
+        </a>
+        <p class="footer__slogan">{{ site.slogan }}</p>
+        <p class="footer__tag">Agencia de Viajes &amp; Multiservicios en Madrid.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Servicios">
+        <h2 class="footer__title">Servicios</h2>
+        <ul>
+          <li><a href="{{#if page.isHome}}{{else}}/{{/if}}#cotizador">Vuelos con 2 maletas de 23 kg</a></li>
+          <li><a href="{{#if page.isHome}}{{else}}/{{/if}}#paqueteria">Paquetería Madrid → Lima</a></li>
+          <li><a href="{{#if page.isHome}}{{else}}/{{/if}}#servicios">Hoteles y paquetes vacacionales</a></li>
+          <li><a href="{{#if page.isHome}}{{else}}/{{/if}}#servicios">Seguros de viaje</a></li>
+          <li><a href="{{#if page.isHome}}{{else}}/{{/if}}#servicios">Documentación de viaje</a></li>
+          <li><a href="{{#if page.isHome}}{{else}}/{{/if}}#servicios">Traslados y grupos</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Legal">
+        <h2 class="footer__title">Legal</h2>
+        <ul>
+          <li><a href="/aviso-legal.html">Aviso legal</a></li>
+          <li><a href="/privacidad.html">Política de privacidad</a></li>
+          <li><a href="/cookies.html">Política de cookies</a></li>
+          <li><a href="/condiciones.html">Condiciones de contratación</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col">
+        <h2 class="footer__title">Oficina</h2>
+        <address class="footer__address">
+          {{ site.address.street }}<br>
+          {{ site.address.postalCode }} {{ site.address.city }} ({{ site.address.district }})
+        </address>
+        <ul class="footer__contact">
+          <li><a href="{{ site.phone.tel }}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{ site.phone.display }}</a></li>
+          <li><a href="{{ wa.generic }}" target="_blank" rel="noopener" data-wa="generic"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a></li>
+          {{#if site.email}}<li><a href="mailto:{{ site.email }}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{ site.email }}</a></li>{{/if}}
+          {{#if site.hours}}<li><span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{ site.hours }}</span></li>{{/if}}
+          <li><a href="{{ site.address.mapsUrl }}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-map"/></svg>Ver en Google Maps</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <p>© <span data-year>{{ year }}</span> {{ site.legalName }} · CIF {{ site.cif }} · Agencia de viajes con licencia {{ site.license }}</p>
+      <p>{{ site.address.full }}</p>
+      <p class="footer__credits">Fotografías de <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> (ver créditos en CREDITS.md del proyecto).</p>
+    </div>
+  </div>
+</footer>
+
+<a class="fab-wa" href="{{ wa.generic }}" target="_blank" rel="noopener" data-wa="generic" aria-label="Escríbenos por WhatsApp al {{ site.phone.display }}">
+  <span class="fab-wa__pulse" aria-hidden="true"></span>
+  <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+<div class="toast" role="status" aria-live="polite" data-toast></div>

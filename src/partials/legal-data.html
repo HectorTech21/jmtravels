@@ -1,0 +1,12 @@
+<div class="legal__data">
+  <dl>
+    <dt>Titular</dt><dd>{{ site.legalName }}</dd>
+    <dt>Nombre comercial</dt><dd>{{ site.tradeName }}</dd>
+    <dt>CIF</dt><dd>{{ site.cif }}</dd>
+    <dt>Domicilio</dt><dd>{{ site.address.full }}</dd>
+    <dt>Teléfono / WhatsApp</dt><dd><a href="{{ site.phone.tel }}">{{ site.phone.display }}</a></dd>
+    {{#if site.email}}<dt>Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>{{/if}}
+    <dt>Licencia de agencia de viajes</dt><dd>{{ site.license }} (Comunidad de Madrid)</dd>
+    {{#if site.registry}}<dt>Datos registrales</dt><dd>{{ site.registry }}</dd>{{/if}}
+  </dl>
+</div>
