@@ -1,0 +1,636 @@
+<!--page {
+  "title": "JMD Travesías por el Mundo · Agencia de viajes en Madrid · Vuelos a Latinoamérica con 2 maletas",
+  "description": "Agencia de viajes en Madrid (C/ Alcalá 414). Vuelos a Latinoamérica con 2 maletas de 23 kg y paquetería puerta a puerta Madrid → Lima. No somos virtuales. Somos reales. Licencia CICMA 4321.",
+  "priority": 1.0
+}-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+{{> head}}
+{{{ gen.jsonLd }}}
+</head>
+<body class="home">
+{{> icons}}
+{{> header}}
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true" data-parallax>
+      {{@img hero hero "hero__img"}}
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow eyebrow--light" data-hero="fade">
+          <span class="dot" aria-hidden="true"></span> Agencia de Viajes &amp; Multiservicios · Madrid
+        </p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="w">Vuela</span> <span class="w">a</span> <span class="w">Latinoamérica</span>
+          <span class="w">con</span> <span class="w hero__hl">2&nbsp;maletas</span> <span class="w">de</span> <span class="w hero__hl hero__hl--gold">23&nbsp;kg</span>
+        </h1>
+        <p class="hero__lead" data-hero="fade">
+          Vuelos desde Madrid con <strong>2PC incluidas</strong> y <strong>paquetería puerta a puerta Madrid → Lima</strong>.
+          Te atendemos en persona en nuestra oficina de {{ site.address.streetShort }}.
+        </p>
+        <div class="hero__ctas" data-hero="fade">
+          <a class="btn btn--gold btn--lg" href="#cotizador" data-magnetic>
+            Pide tu precio <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="btn btn--glass btn--lg" href="{{ wa.flight }}" target="_blank" rel="noopener" data-wa="flight" data-magnetic>
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp
+          </a>
+        </div>
+        <ul class="hero__chips" data-hero="fade">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>2PC · 23 KG</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Licencia {{ site.license }}</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Oficina física en Madrid</li>
+        </ul>
+      </div>
+
+      <div class="hero__route" data-hero="route">
+        <div class="route-card">
+          <div class="route-card__head">
+            <span class="route-card__label">Tarjeta de ruta</span>
+            <span class="route-card__label">2PC · 23KG</span>
+          </div>
+          <svg class="route" viewBox="0 0 400 220" role="img" aria-labelledby="route-title">
+            <title id="route-title">Ruta de vuelo de Madrid (MAD) a Lima (LIM)</title>
+            <defs>
+              <linearGradient id="routeGrad" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#ffc83d"/>
+                <stop offset=".55" stop-color="#ff7a1a"/>
+                <stop offset="1" stop-color="#ff3d8b"/>
+              </linearGradient>
+            </defs>
+            <path class="route__ghost" d="M40 170 C 120 20, 280 20, 360 150"/>
+            <path class="route__path" id="routePath" d="M40 170 C 120 20, 280 20, 360 150"/>
+            <circle class="route__pin" cx="40" cy="170" r="7"/>
+            <circle class="route__pin route__pin--end" cx="360" cy="150" r="7"/>
+            <circle class="route__ring" cx="360" cy="150" r="7"/>
+            <g class="route__plane" data-plane>
+              <path d="M12 2 9 9 1 11v2l8 1 1 6-2 2v1l4-1 4 1v-1l-2-2 1-6 8-1v-2l-8-2z" transform="translate(-12 -12)"/>
+            </g>
+          </svg>
+          <div class="route-card__foot">
+            <div><span class="route-card__code">MAD</span><span class="route-card__city">Madrid</span></div>
+            <div class="route-card__mid">
+              <span>Equipaje</span>
+              <strong>2 × 23 kg</strong>
+            </div>
+            <div class="ta-r"><span class="route-card__code">LIM</span><span class="route-card__city">Lima</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#salidas" aria-label="Ir al panel de salidas">
+      <span aria-hidden="true"></span>
+    </a>
+  </section>
+
+  <!-- ============ PANEL DE SALIDAS ============ -->
+  <section class="departures" id="salidas" aria-labelledby="salidas-title">
+    <div class="container">
+      <div class="section-head section-head--light" data-reveal>
+        <p class="eyebrow eyebrow--gold">Salidas desde Madrid · MAD</p>
+        <h2 class="section-title" id="salidas-title">Tu próximo vuelo, <span class="text-grad">con 2 maletas facturadas</span></h2>
+      </div>
+
+      <div class="board" data-board data-reveal>
+        <div class="board__top">
+          <span class="board__title"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg> Salidas · Departures</span>
+          <span class="board__clock" data-clock aria-hidden="true">MADRID</span>
+          <button class="board__toggle" type="button" data-board-toggle aria-pressed="false">Pausar panel</button>
+        </div>
+        <div class="board__head" aria-hidden="true">
+          <span>Código</span><span>Destino</span><span class="board__h-bag">Equipaje</span><span>Estado</span>
+        </div>
+        <div class="board__rows" aria-hidden="true" data-board-rows>{{{ gen.boardRows }}}
+        </div>
+        <p class="sr-only">Destinos destacados desde Madrid, todos con 2 maletas de 23 kg: {{{ gen.destList }}}. Precio: consultar.</p>
+      </div>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <ul class="marquee__track">{{{ gen.marqueeItems }}}</ul>
+      <ul class="marquee__track">{{{ gen.marqueeItems }}}</ul>
+    </div>
+  </section>
+
+  <!-- ============ ESPECIALIDADES / CIFRAS REALES ============ -->
+  <section class="specs" id="especialidades" aria-labelledby="specs-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Nuestras especialidades</p>
+        <h2 class="section-title" id="specs-title">Viaja con todo lo tuyo. <span class="text-grad">Envía lo que quieras a Lima.</span></h2>
+      </div>
+
+      <ul class="stats" data-reveal-group>
+        <li class="stat" data-reveal>
+          <span class="stat__num"><span data-count="2">2</span></span>
+          <span class="stat__label">maletas facturadas (2PC)</span>
+        </li>
+        <li class="stat" data-reveal>
+          <span class="stat__num"><span data-count="23">23</span><small>kg</small></span>
+          <span class="stat__label">por maleta</span>
+        </li>
+        <li class="stat" data-reveal>
+          <span class="stat__num"><span data-count="46">46</span><small>kg</small></span>
+          <span class="stat__label">facturados en total</span>
+        </li>
+        <li class="stat" data-reveal>
+          <span class="stat__num"><span data-count="{{ gen.destCount }}">{{ gen.destCount }}</span></span>
+          <span class="stat__label">destinos destacados</span>
+        </li>
+      </ul>
+
+      <div class="specs__grid">
+        <article class="spec spec--flight" data-reveal>
+          <div class="spec__media">{{@img suitcases half "spec__img"}}</div>
+          <div class="spec__body">
+            <span class="spec__icon"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></span>
+            <h3>Vuelos a Latinoamérica con 2 maletas de 23 kg</h3>
+            <p>Buscamos tu vuelo desde Madrid con <strong>dos piezas de 23 kg facturadas (2PC)</strong>. Ida y vuelta o solo ida, para ti, tu familia o tu grupo.</p>
+            <a class="link-arrow" href="#cotizador">Cotizar vuelo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+        <article class="spec spec--parcel" data-reveal>
+          <div class="spec__media">{{@img limacoast half "spec__img"}}</div>
+          <div class="spec__body">
+            <span class="spec__icon spec__icon--orange"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></span>
+            <h3>Paquetería puerta a puerta Madrid → Lima</h3>
+            <p>Envía cajas y paquetes a tu familia en Lima. Calcula el peso a facturar y pide presupuesto por WhatsApp en un minuto.</p>
+            <a class="link-arrow" href="#paqueteria">Enviar un paquete <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COTIZADOR DE VUELOS ============ -->
+  <section class="quote" id="cotizador" aria-labelledby="cotizador-title">
+    <div class="quote__bg" aria-hidden="true"></div>
+    <div class="container quote__grid">
+      <div class="quote__intro" data-reveal>
+        <p class="eyebrow eyebrow--gold">Cotizador de vuelos</p>
+        <h2 class="section-title section-title--light" id="cotizador-title">Pide tu precio con <span class="text-grad">2 maletas de 23 kg</span></h2>
+        <p class="lead lead--light">Rellena los datos y te abrimos WhatsApp con el mensaje listo. Sin registros y sin compromiso: te respondemos con el precio.</p>
+        <ul class="checks checks--light">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Ida y vuelta o solo ida</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Adultos y niños</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Pago en nuestra oficina de Madrid</li>
+        </ul>
+      </div>
+
+      <form class="ticket" id="flight-form" novalidate data-reveal>
+        <div class="ticket__head">
+          <span class="ticket__brand">JMD · Boarding request</span>
+          <span class="ticket__bag">2PC · 23KG</span>
+        </div>
+
+        <fieldset class="seg">
+          <legend class="sr-only">Tipo de viaje</legend>
+          <label class="seg__opt"><input type="radio" name="trip" value="ida y vuelta" checked><span>Ida y vuelta</span></label>
+          <label class="seg__opt"><input type="radio" name="trip" value="solo ida"><span>Solo ida</span></label>
+        </fieldset>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="f-origin">Origen</label>
+            <input id="f-origin" name="origin" type="text" value="Madrid (MAD)" autocomplete="off" required>
+            <p class="field__error" id="f-origin-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-dest">Destino</label>
+            <select id="f-dest" name="dest" required>
+              <option value="">Elige destino…</option>
+              {{{ gen.destOptions }}}
+              <option value="otro">Otro destino…</option>
+            </select>
+            <p class="field__error" id="f-dest-err"></p>
+          </div>
+        </div>
+        <div class="field" data-other hidden>
+          <label for="f-dest-other">¿Qué destino?</label>
+          <input id="f-dest-other" name="destOther" type="text" autocomplete="off" placeholder="Ciudad y país">
+          <p class="field__error" id="f-dest-other-err"></p>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="f-depart">Fecha de ida</label>
+            <input id="f-depart" name="depart" type="date" required>
+            <p class="field__error" id="f-depart-err"></p>
+          </div>
+          <div class="field" data-return>
+            <label for="f-return">Fecha de vuelta</label>
+            <input id="f-return" name="return" type="date">
+            <p class="field__error" id="f-return-err"></p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="f-adults">Adultos</label>
+            <div class="stepper">
+              <button type="button" class="stepper__btn" data-step="-1" aria-label="Un adulto menos">−</button>
+              <input id="f-adults" name="adults" type="number" min="1" max="20" value="1" inputmode="numeric">
+              <button type="button" class="stepper__btn" data-step="1" aria-label="Un adulto más">+</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-kids">Niños</label>
+            <div class="stepper">
+              <button type="button" class="stepper__btn" data-step="-1" aria-label="Un niño menos">−</button>
+              <input id="f-kids" name="kids" type="number" min="0" max="20" value="0" inputmode="numeric">
+              <button type="button" class="stepper__btn" data-step="1" aria-label="Un niño más">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-name">Tu nombre</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+          <p class="field__error" id="f-name-err"></p>
+        </div>
+
+        <div class="ticket__tear" aria-hidden="true"></div>
+        <button class="btn btn--wa btn--block btn--lg" type="submit" data-magnetic>
+          <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Pedir precio por WhatsApp
+        </button>
+        <p class="ticket__note">Se abrirá WhatsApp con tu consulta al {{ site.phone.display }}. Tú decides si la envías.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ DESTINOS ============ -->
+  <section class="destinations" id="destinos" aria-labelledby="destinos-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Destinos destacados</p>
+        <h2 class="section-title" id="destinos-title">Tu tarjeta de embarque a <span class="text-grad">Latinoamérica</span></h2>
+        <p class="lead">Todos con salida desde Madrid y 2 maletas de 23 kg. Pulsa «Pedir precio» y preparamos tu consulta.</p>
+      </div>
+      <ul class="bp-grid">{{{ gen.destCards }}}
+      </ul>
+      <p class="destinations__more" data-reveal>¿Tu destino no está en la lista? <a href="#cotizador" data-quote="otro">Pídenos precio para cualquier otro destino</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ PAQUETERÍA ============ -->
+  <section class="parcel" id="paqueteria" aria-labelledby="paqueteria-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow eyebrow--orange">Paquetería puerta a puerta</p>
+        <h2 class="section-title" id="paqueteria-title">De Madrid a la puerta de tu casa <span class="text-grad">en Lima</span></h2>
+        <p class="lead">Calcula el peso a facturar de tu envío y pide tu presupuesto por WhatsApp.</p>
+      </div>
+
+      <div class="parcel-route" data-reveal>
+        <svg class="parcel-route__svg" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+          <path class="parcel-route__line" d="M20 90 C 250 10, 750 10, 980 90"/>
+          <path class="parcel-route__draw" id="parcelPath" d="M20 90 C 250 10, 750 10, 980 90"/>
+        </svg>
+        <span class="parcel-route__box" data-parcel-box aria-hidden="true"><svg class="icon"><use href="#i-box"/></svg></span>
+        <ol class="steps">
+          <li class="step"><span class="step__n">01</span><h3>Nos cuentas qué envías</h3><p>Peso, medidas, número de bultos y distrito de entrega en Lima.</p></li>
+          <li class="step"><span class="step__n">02</span><h3>Te damos precio</h3><p>Calculamos el peso a facturar (real o volumétrico, el mayor) y te respondemos.</p></li>
+          <li class="step"><span class="step__n">03</span><h3>Preparamos el envío</h3><p>Te orientamos sobre embalaje y contenido permitido en envíos a Perú.</p></li>
+          <li class="step"><span class="step__n">04</span><h3>Entrega en Lima</h3><p>Tu paquete llega a la puerta de destino en Lima.</p></li>
+        </ol>
+      </div>
+
+      <div class="parcel__grid">
+        <!-- Calculadora de peso volumétrico -->
+        <form class="panel calc" id="calc-form" novalidate data-reveal>
+          <div class="panel__head">
+            <span class="panel__icon"><svg class="icon" aria-hidden="true"><use href="#i-scale"/></svg></span>
+            <div>
+              <h3 class="panel__title">Calculadora de peso volumétrico</h3>
+              <p class="panel__sub">Largo × ancho × alto (cm) ÷ 5000</p>
+            </div>
+          </div>
+          <div class="grid-3">
+            <div class="field"><label for="c-l">Largo (cm)</label><input id="c-l" name="l" type="number" min="1" step="0.5" inputmode="decimal" placeholder="60"></div>
+            <div class="field"><label for="c-w">Ancho (cm)</label><input id="c-w" name="w" type="number" min="1" step="0.5" inputmode="decimal" placeholder="40"></div>
+            <div class="field"><label for="c-h">Alto (cm)</label><input id="c-h" name="h" type="number" min="1" step="0.5" inputmode="decimal" placeholder="40"></div>
+          </div>
+          <div class="field">
+            <label for="c-kg">Peso real (kg)</label>
+            <input id="c-kg" name="kg" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="12">
+          </div>
+          <p class="field__error" id="calc-err" role="alert"></p>
+
+          <dl class="calc__out" aria-live="polite">
+            <div><dt>Peso real</dt><dd><span data-out="real">—</span> kg</dd></div>
+            <div><dt>Peso volumétrico</dt><dd><span data-out="vol">—</span> kg</dd></div>
+            <div class="calc__bill"><dt>Peso a facturar</dt><dd><span data-out="bill">—</span> kg</dd></div>
+          </dl>
+          <p class="calc__hint">Se factura el mayor entre peso real y volumétrico, redondeado hacia arriba a 0,5 kg.</p>
+          <button class="btn btn--outline btn--block" type="button" data-calc-use disabled>
+            Usar este peso en el cotizador de paquetes <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </button>
+        </form>
+
+        <!-- Cotizador de paquetería -->
+        <form class="panel panel--dark" id="parcel-form" novalidate data-reveal>
+          <div class="panel__head">
+            <span class="panel__icon panel__icon--orange"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></span>
+            <div>
+              <h3 class="panel__title">Cotizador de paquetería a Lima</h3>
+              <p class="panel__sub">Madrid → Lima · puerta a puerta</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-name">Remitente (tu nombre)</label>
+            <input id="p-name" name="name" type="text" autocomplete="name" required>
+            <p class="field__error" id="p-name-err"></p>
+          </div>
+          <div class="grid-2">
+            <div class="field">
+              <label for="p-kg">Peso (kg)</label>
+              <input id="p-kg" name="kg" type="number" min="0.5" step="0.5" inputmode="decimal" required>
+              <p class="field__error" id="p-kg-err"></p>
+            </div>
+            <div class="field">
+              <label for="p-pcs">Bultos</label>
+              <div class="stepper">
+                <button type="button" class="stepper__btn" data-step="-1" aria-label="Un bulto menos">−</button>
+                <input id="p-pcs" name="pcs" type="number" min="1" max="50" value="1" inputmode="numeric">
+                <button type="button" class="stepper__btn" data-step="1" aria-label="Un bulto más">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-district">Distrito de entrega en Lima</label>
+            <select id="p-district" name="district" required>
+              <option value="">Elige distrito…</option>
+              {{{ gen.districtOptions }}}
+              <option value="otro">Otro (indícalo en el contenido)</option>
+            </select>
+            <p class="field__error" id="p-district-err"></p>
+          </div>
+          <div class="field">
+            <label for="p-content">Contenido del envío</label>
+            <textarea id="p-content" name="content" rows="3" required placeholder="Ej.: ropa, calzado, libros…"></textarea>
+            <p class="field__error" id="p-content-err"></p>
+          </div>
+          <button class="btn btn--wa btn--block btn--lg" type="submit" data-magnetic>
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Pedir precio del envío
+          </button>
+          <p class="panel__note">Precio: consultar. Te respondemos por WhatsApp.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="services" id="servicios" aria-labelledby="servicios-title">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Agencia de viajes &amp; multiservicios</p>
+        <h2 class="section-title" id="servicios-title">Todo tu viaje, <span class="text-grad">en una sola oficina</span></h2>
+      </div>
+      <ul class="bento">
+        <li class="svc svc--photo svc--xl" data-reveal>
+          {{@img beach wide "svc__img"}}
+          <div class="svc__body">
+            <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-hotel"/></svg></span>
+            <h3>Hoteles y paquetes vacacionales</h3>
+            <p>Reservamos tu alojamiento o un paquete completo para tus vacaciones.</p>
+          </div>
+        </li>
+        <li class="svc" data-reveal>
+          <span class="svc__icon svc__icon--gold"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></span>
+          <h3>Vuelos con 2PC</h3>
+          <p>Vuelos a Latinoamérica con 2 maletas de 23 kg facturadas.</p>
+        </li>
+        <li class="svc" data-reveal>
+          <span class="svc__icon svc__icon--orange"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></span>
+          <h3>Paquetería a Lima</h3>
+          <p>Envíos puerta a puerta desde Madrid hasta Lima (Perú).</p>
+        </li>
+        <li class="svc" data-reveal>
+          <span class="svc__icon svc__icon--red"><svg class="icon" aria-hidden="true"><use href="#i-umbrella"/></svg></span>
+          <h3>Seguros de viaje</h3>
+          <p>Viaja tranquilo con un seguro adaptado a tu viaje.</p>
+        </li>
+        <li class="svc" data-reveal>
+          <span class="svc__icon svc__icon--magenta"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></span>
+          <h3>Documentación de viaje</h3>
+          <p>Te asesoramos sobre la documentación que necesitas para viajar.</p>
+        </li>
+        <li class="svc svc--photo" data-reveal>
+          {{@img machupicchu half "svc__img"}}
+          <div class="svc__body">
+            <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-bus"/></svg></span>
+            <h3>Traslados y grupos</h3>
+            <p>Organizamos traslados y viajes para grupos.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ NO SOMOS VIRTUALES ============ -->
+  <section class="real" id="nosotros" aria-labelledby="real-title" data-real>
+    <div class="real__bg" aria-hidden="true">{{@img window wide "real__img"}}</div>
+    <div class="real__pin">
+      <div class="container">
+        <p class="eyebrow eyebrow--gold">Nuestro lema</p>
+        <h2 class="real__title" id="real-title">
+          <span class="real__line"><span class="rw">No</span> <span class="rw">somos</span> <span class="rw">virtuales.</span></span>
+          <span class="real__line real__line--accent"><span class="rw">Somos</span> <span class="rw">reales.</span></span>
+        </h2>
+        <ul class="real__points">
+          <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span><strong>Oficina física</strong> en {{ site.address.streetShort }}, Centro Comercial Alcalá Norte (Madrid).</span></li>
+          <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span><strong>Atención cara a cara</strong>: ven, pregunta y paga en nuestra oficina.</span></li>
+          <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span><strong>Agencia con licencia</strong> {{ site.license }}.</span></li>
+          <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span><strong>Personas reales</strong> al teléfono y en WhatsApp: {{ site.phone.display }}.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OFICINA ============ -->
+  <section class="office" id="oficina" aria-labelledby="oficina-title">
+    <div class="container office__grid">
+      <div class="office__info" data-reveal>
+        <p class="eyebrow">Visítanos</p>
+        <h2 class="section-title" id="oficina-title">Nuestra oficina <span class="text-grad">en Madrid</span></h2>
+        <address class="office__address">
+          <strong>{{ site.brandName }}</strong><br>
+          {{ site.address.streetShort }}<br>
+          {{ site.address.detail }}<br>
+          {{ site.address.postalCode }} {{ site.address.city }} ({{ site.address.district }})
+        </address>
+
+        <ul class="office__list">
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+            <a class="office__phone" href="{{ site.phone.tel }}">{{ site.phone.display }}</a>
+            <button class="chip-btn" type="button" data-copy="{{ site.phone.display }}">
+              <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar</span>
+            </button>
+          </li>
+          {{#if site.email}}<li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{{/if}}
+          {{#if site.hours}}<li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>{{ site.hours }}</span></li>{{/if}}
+          <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span>Agencia de viajes con licencia <strong>{{ site.license }}</strong></span></li>
+        </ul>
+
+        <div class="office__ctas">
+          <a class="btn btn--primary" href="{{ site.address.mapsUrl }}" target="_blank" rel="noopener" data-magnetic>
+            <svg class="icon" aria-hidden="true"><use href="#i-map"/></svg> Cómo llegar (Google Maps)
+          </a>
+          <a class="btn btn--wa" href="{{ wa.generic }}" target="_blank" rel="noopener" data-wa="generic" data-magnetic>
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="map" data-map data-reveal>
+        <div class="map__placeholder" aria-hidden="true">
+          <svg viewBox="0 0 400 300" class="map__art">
+            <path d="M0 210 L400 150" class="map__road map__road--main"/>
+            <path d="M70 0 L140 300 M260 0 L300 300 M0 90 L400 60 M0 270 L400 240" class="map__road"/>
+            <circle cx="220" cy="175" r="40" class="map__halo"/>
+          </svg>
+          <span class="map__marker"><svg class="icon"><use href="#i-pin"/></svg></span>
+          <span class="map__label">{{ site.address.streetShort }} · C.C. Alcalá Norte</span>
+        </div>
+        <div class="map__overlay">
+          <button class="btn btn--light" type="button" data-map-load>
+            <svg class="icon" aria-hidden="true"><use href="#i-map"/></svg> Cargar mapa interactivo
+          </button>
+          <p class="map__note">Al cargar el mapa se conectará con Google Maps, que puede instalar sus propias cookies. <a href="/cookies.html">Más info</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="container faq__grid">
+      <div class="section-head section-head--sticky" data-reveal>
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2 class="section-title" id="faq-title">Resolvemos <span class="text-grad">tus dudas</span></h2>
+        <p class="lead">¿No encuentras tu respuesta? Llámanos al <a href="{{ site.phone.tel }}">{{ site.phone.display }}</a> o escríbenos por WhatsApp.</p>
+      </div>
+      <div class="faq__list" data-reveal>
+        <details class="acc">
+          <summary><span>¿Qué significa «2PC» o viajar con 2 maletas de 23 kg?</span><i aria-hidden="true"></i></summary>
+          <div class="acc__body"><p>«2PC» significa <strong>2 piezas de equipaje facturado</strong>. En nuestras cotizaciones buscamos tarifas que incluyan 2 maletas de hasta 23 kg cada una, es decir, hasta 46 kg facturados en total por pasajero. Las medidas máximas y el equipaje de mano dependen de cada aerolínea y tarifa: te lo confirmamos siempre antes de emitir el billete.</p></div>
+        </details>
+        <details class="acc">
+          <summary><span>¿Puedo pagar en la oficina?</span><i aria-hidden="true"></i></summary>
+          <div class="acc__body"><p>Sí. Somos una agencia real con oficina física en {{ site.address.full }}. Puedes venir a formalizar tu reserva y pagar en persona. Consúltanos las formas de pago disponibles para tu caso.</p></div>
+        </details>
+        <details class="acc">
+          <summary><span>¿Cómo se calcula el precio de un paquete a Lima?</span><i aria-hidden="true"></i></summary>
+          <div class="acc__body"><p>Comparamos el <strong>peso real</strong> de la caja con su <strong>peso volumétrico</strong> (largo × ancho × alto en cm ÷ 5000) y se factura el mayor de los dos. También influyen el número de bultos y el distrito de entrega. Usa nuestra <a href="#paqueteria">calculadora</a> y pídenos el precio por WhatsApp.</p></div>
+        </details>
+        <details class="acc">
+          <summary><span>¿Qué artículos no se pueden enviar a Perú?</span><i aria-hidden="true"></i></summary>
+          <div class="acc__body">
+            <p>Por normativa de transporte y aduanas no se admiten, entre otros:</p>
+            <ul>
+              <li>Mercancías peligrosas: inflamables, explosivos, aerosoles, gases, pilas y baterías de litio sueltas o productos corrosivos.</li>
+              <li>Armas, munición y réplicas, así como drogas y estupefacientes.</li>
+              <li>Dinero en efectivo, joyas o valores.</li>
+              <li>Alimentos perecederos, plantas, semillas y productos de origen animal sin autorización.</li>
+              <li>Falsificaciones y cualquier artículo prohibido o restringido por la aduana peruana (SUNAT).</li>
+            </ul>
+            <p>La normativa puede cambiar: <strong>consúltanos siempre el contenido antes de preparar tu envío</strong>.</p>
+          </div>
+        </details>
+        <details class="acc">
+          <summary><span>¿A qué zonas de Lima entregáis?</span><i aria-hidden="true"></i></summary>
+          <div class="acc__body"><p>El servicio es puerta a puerta con destino Lima (Perú). Indícanos el <strong>distrito de entrega</strong> en el cotizador y te confirmamos la cobertura y las condiciones para esa zona antes de aceptar el envío.</p></div>
+        </details>
+        <details class="acc">
+          <summary><span>¿Qué es la licencia {{ site.license }}?</span><i aria-hidden="true"></i></summary>
+          <div class="acc__body"><p>Es el código de identificación como agencia de viajes en la Comunidad de Madrid. {{ site.legalName }} (CIF {{ site.cif }}) figura como agencia de viajes con el código <strong>{{ site.license }}</strong>. Que una agencia tenga licencia es una garantía para el viajero: <em>no somos virtuales, somos reales</em>.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contact" id="contacto" aria-labelledby="contacto-title">
+    <div class="container contact__grid">
+      <div class="contact__intro" data-reveal>
+        <p class="eyebrow eyebrow--gold">Contacto</p>
+        <h2 class="section-title section-title--light" id="contacto-title">Hablemos de <span class="text-grad">tu próximo viaje</span></h2>
+        <p class="lead lead--light">Escríbenos y te respondemos. El formulario prepara tu mensaje para enviarlo por WhatsApp{{#if site.email}} o por email{{/if}}; no guardamos nada en esta web.</p>
+        <ul class="contact__quick">
+          <li><a href="{{ site.phone.tel }}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{ site.phone.display }}</a></li>
+          <li><a href="{{ wa.generic }}" target="_blank" rel="noopener" data-wa="generic"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a></li>
+          {{#if site.email}}<li><a href="mailto:{{ site.email }}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{ site.email }}</a></li>{{/if}}
+          <li><a href="{{ site.address.mapsUrl }}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>{{ site.address.streetShort }}, {{ site.address.city }}</a></li>
+        </ul>
+      </div>
+
+      <form class="panel contact__form" id="contact-form" novalidate data-reveal>
+        <div class="grid-2">
+          <div class="field">
+            <label for="k-name">Nombre</label>
+            <input id="k-name" name="name" type="text" autocomplete="name" required>
+            <p class="field__error" id="k-name-err"></p>
+          </div>
+          <div class="field">
+            <label for="k-phone">Teléfono</label>
+            <input id="k-phone" name="phone" type="tel" autocomplete="tel" required>
+            <p class="field__error" id="k-phone-err"></p>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field">
+            <label for="k-email">Email <span class="opt">(opcional)</span></label>
+            <input id="k-email" name="email" type="email" autocomplete="email">
+            <p class="field__error" id="k-email-err"></p>
+          </div>
+          <div class="field">
+            <label for="k-topic">Motivo</label>
+            <select id="k-topic" name="topic">
+              <option>Vuelos con 2 maletas</option>
+              <option>Paquetería a Lima</option>
+              <option>Hoteles y paquetes vacacionales</option>
+              <option>Seguros de viaje</option>
+              <option>Documentación de viaje</option>
+              <option>Traslados y grupos</option>
+              <option>Otro</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="k-msg">Mensaje</label>
+          <textarea id="k-msg" name="message" rows="4" required></textarea>
+          <p class="field__error" id="k-msg-err"></p>
+        </div>
+        <div class="field field--check">
+          <input id="k-rgpd" name="rgpd" type="checkbox" required>
+          <label for="k-rgpd">He leído y acepto la <a href="/privacidad.html" target="_blank">política de privacidad</a>.</label>
+          <p class="field__error" id="k-rgpd-err"></p>
+        </div>
+        <p class="rgpd-info"><strong>Responsable:</strong> {{ site.legalName }} <strong>Finalidad:</strong> responder a tu consulta. <strong>Legitimación:</strong> tu consentimiento. <strong>Derechos:</strong> acceso, rectificación, supresión y demás derechos, como se explica en la <a href="/privacidad.html">política de privacidad</a>.</p>
+        <div class="contact__actions">
+          <button class="btn btn--wa btn--lg" type="submit" data-send="wa" data-magnetic>
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Enviar por WhatsApp
+          </button>
+          {{#if site.email}}<button class="btn btn--outline btn--lg" type="submit" data-send="mail" data-magnetic>
+            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Enviar por email
+          </button>{{/if}}
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+{{> footer}}
+{{> scripts}}
+</body>
+</html>
