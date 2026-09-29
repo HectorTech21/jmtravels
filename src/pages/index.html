@@ -46,7 +46,7 @@
         </div>
         <ul class="hero__chips" data-hero="fade">
           <li><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>2PC · 23 KG</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Licencia {{ site.license }}</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Licencia {{ site.license }}</li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Oficina física en Madrid</li>
         </ul>
       </div>
@@ -96,8 +96,8 @@
   <section class="departures" id="salidas" aria-labelledby="salidas-title">
     <div class="container">
       <div class="section-head section-head--light" data-reveal>
-        <p class="eyebrow eyebrow--gold">Salidas desde Madrid · MAD</p>
-        <h2 class="section-title" id="salidas-title">Tu próximo vuelo, <span class="text-grad">con 2 maletas facturadas</span></h2>
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">01</span>Salidas desde Madrid · MAD</p>
+        <h2 class="section-title" id="salidas-title">Tu próximo vuelo, <span class="hl-gold">con 2 maletas facturadas</span></h2>
       </div>
 
       <div class="board" data-board data-reveal>
@@ -125,8 +125,8 @@
   <section class="specs" id="especialidades" aria-labelledby="specs-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Nuestras especialidades</p>
-        <h2 class="section-title" id="specs-title">Viaja con todo lo tuyo. <span class="text-grad">Envía lo que quieras a Lima.</span></h2>
+        <p class="eyebrow"><span class="eyebrow__n">02</span>Nuestras especialidades</p>
+        <h2 class="section-title" id="specs-title">Viaja con todo lo tuyo. <span class="hl">Envía lo que quieras a Lima.</span></h2>
       </div>
 
       <ul class="stats" data-reveal-group>
@@ -176,8 +176,8 @@
     <div class="quote__bg" aria-hidden="true"></div>
     <div class="container quote__grid">
       <div class="quote__intro" data-reveal>
-        <p class="eyebrow eyebrow--gold">Cotizador de vuelos</p>
-        <h2 class="section-title section-title--light" id="cotizador-title">Pide tu precio con <span class="text-grad">2 maletas de 23 kg</span></h2>
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">03</span>Cotizador de vuelos</p>
+        <h2 class="section-title section-title--light" id="cotizador-title">Pide tu precio con <span class="hl-gold">2 maletas de 23 kg</span></h2>
         <p class="lead lead--light">Rellena los datos y te abrimos WhatsApp con el mensaje listo. Sin registros y sin compromiso: te respondemos con el precio.</p>
         <ul class="checks checks--light">
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Ida y vuelta o solo ida</li>
@@ -271,13 +271,22 @@
   <section class="destinations" id="destinos" aria-labelledby="destinos-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Destinos destacados</p>
-        <h2 class="section-title" id="destinos-title">Tu tarjeta de embarque a <span class="text-grad">Latinoamérica</span></h2>
+        <p class="eyebrow"><span class="eyebrow__n">04</span>Destinos destacados</p>
+        <h2 class="section-title" id="destinos-title">Tu tarjeta de embarque a <span class="hl">Latinoamérica</span></h2>
         <p class="lead">Todos con salida desde Madrid y 2 maletas de 23 kg. Pulsa «Pedir precio» y preparamos tu consulta.</p>
       </div>
       <ul class="bp-grid">{{{ gen.destCards }}}
+        <li class="bp bp--cta" data-reveal="card">
+          <div class="bp-cta">
+            <p class="bp-cta__route" aria-hidden="true">MAD <span>→</span> ???</p>
+            <div class="bp-cta__text">
+              <h3>¿Tu destino no está en la lista?</h3>
+              <p>Pídenos precio para cualquier otro destino y te contamos qué opciones de equipaje tiene.</p>
+            </div>
+            <button type="button" class="btn btn--gold" data-quote="otro" data-magnetic>Pedir precio de otro destino</button>
+          </div>
+        </li>
       </ul>
-      <p class="destinations__more" data-reveal>¿Tu destino no está en la lista? <a href="#cotizador" data-quote="otro">Pídenos precio para cualquier otro destino</a>.</p>
     </div>
   </section>
 
@@ -285,8 +294,8 @@
   <section class="parcel" id="paqueteria" aria-labelledby="paqueteria-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow eyebrow--orange">Paquetería puerta a puerta</p>
-        <h2 class="section-title" id="paqueteria-title">De Madrid a la puerta de tu casa <span class="text-grad">en Lima</span></h2>
+        <p class="eyebrow eyebrow--orange"><span class="eyebrow__n">05</span>Paquetería puerta a puerta</p>
+        <h2 class="section-title" id="paqueteria-title">De Madrid a la puerta de tu casa <span class="hl hl--orange">en Lima</span></h2>
         <p class="lead">Calcula el peso a facturar de tu envío y pide tu presupuesto por WhatsApp.</p>
       </div>
 
@@ -392,8 +401,8 @@
   <section class="services" id="servicios" aria-labelledby="servicios-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Agencia de viajes &amp; multiservicios</p>
-        <h2 class="section-title" id="servicios-title">Todo tu viaje, <span class="text-grad">en una sola oficina</span></h2>
+        <p class="eyebrow"><span class="eyebrow__n">06</span>Agencia de viajes &amp; multiservicios</p>
+        <h2 class="section-title" id="servicios-title">Todo tu viaje, <span class="hl">en una sola oficina</span></h2>
       </div>
       <ul class="bento">
         <li class="svc svc--photo svc--xl" data-reveal>
@@ -404,23 +413,23 @@
             <p>Reservamos tu alojamiento o un paquete completo para tus vacaciones.</p>
           </div>
         </li>
-        <li class="svc" data-reveal>
-          <span class="svc__icon svc__icon--gold"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></span>
+        <li class="svc" data-reveal data-spot>
+          <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></span>
           <h3>Vuelos con 2PC</h3>
           <p>Vuelos a Latinoamérica con 2 maletas de 23 kg facturadas.</p>
         </li>
-        <li class="svc" data-reveal>
+        <li class="svc" data-reveal data-spot>
           <span class="svc__icon svc__icon--orange"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></span>
           <h3>Paquetería a Lima</h3>
           <p>Envíos puerta a puerta desde Madrid hasta Lima (Perú).</p>
         </li>
-        <li class="svc" data-reveal>
-          <span class="svc__icon svc__icon--red"><svg class="icon" aria-hidden="true"><use href="#i-umbrella"/></svg></span>
+        <li class="svc" data-reveal data-spot>
+          <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-umbrella"/></svg></span>
           <h3>Seguros de viaje</h3>
           <p>Viaja tranquilo con un seguro adaptado a tu viaje.</p>
         </li>
-        <li class="svc" data-reveal>
-          <span class="svc__icon svc__icon--magenta"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></span>
+        <li class="svc" data-reveal data-spot>
+          <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></span>
           <h3>Documentación de viaje</h3>
           <p>Te asesoramos sobre la documentación que necesitas para viajar.</p>
         </li>
@@ -441,7 +450,7 @@
     <div class="real__bg" aria-hidden="true">{{@img window wide "real__img"}}</div>
     <div class="real__pin">
       <div class="container">
-        <p class="eyebrow eyebrow--gold">Nuestro lema</p>
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">07</span>Nuestro lema</p>
         <h2 class="real__title" id="real-title">
           <span class="real__line"><span class="rw">No</span> <span class="rw">somos</span> <span class="rw">virtuales.</span></span>
           <span class="real__line real__line--accent"><span class="rw">Somos</span> <span class="rw">reales.</span></span>
@@ -449,7 +458,7 @@
         <ul class="real__points">
           <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span><strong>Oficina física</strong> en {{ site.address.streetShort }}, Centro Comercial Alcalá Norte (Madrid).</span></li>
           <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span><strong>Atención cara a cara</strong>: ven, pregunta y paga en nuestra oficina.</span></li>
-          <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span><strong>Agencia con licencia</strong> {{ site.license }}.</span></li>
+          <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg><span><strong>Agencia con licencia</strong> {{ site.license }}.</span></li>
           <li data-real-point><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span><strong>Personas reales</strong> al teléfono y en WhatsApp: {{ site.phone.display }}.</span></li>
         </ul>
       </div>
@@ -460,8 +469,8 @@
   <section class="office" id="oficina" aria-labelledby="oficina-title">
     <div class="container office__grid">
       <div class="office__info" data-reveal>
-        <p class="eyebrow">Visítanos</p>
-        <h2 class="section-title" id="oficina-title">Nuestra oficina <span class="text-grad">en Madrid</span></h2>
+        <p class="eyebrow"><span class="eyebrow__n">08</span>Visítanos</p>
+        <h2 class="section-title" id="oficina-title">Nuestra oficina <span class="hl">en Madrid</span></h2>
         <address class="office__address">
           <strong>{{ site.brandName }}</strong><br>
           {{ site.address.streetShort }}<br>
@@ -479,7 +488,7 @@
           </li>
           {{#if site.email}}<li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{{/if}}
           {{#if site.hours}}<li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>{{ site.hours }}</span></li>{{/if}}
-          <li><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span>Agencia de viajes con licencia <strong>{{ site.license }}</strong></span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg><span>Agencia de viajes con licencia <strong>{{ site.license }}</strong></span></li>
         </ul>
 
         <div class="office__ctas">
@@ -516,8 +525,8 @@
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="container faq__grid">
       <div class="section-head section-head--sticky" data-reveal>
-        <p class="eyebrow">Preguntas frecuentes</p>
-        <h2 class="section-title" id="faq-title">Resolvemos <span class="text-grad">tus dudas</span></h2>
+        <p class="eyebrow"><span class="eyebrow__n">09</span>Preguntas frecuentes</p>
+        <h2 class="section-title" id="faq-title">Resolvemos <span class="hl">tus dudas</span></h2>
         <p class="lead">¿No encuentras tu respuesta? Llámanos al <a href="{{ site.phone.tel }}">{{ site.phone.display }}</a> o escríbenos por WhatsApp.</p>
       </div>
       <div class="faq__list" data-reveal>
@@ -563,8 +572,8 @@
   <section class="contact" id="contacto" aria-labelledby="contacto-title">
     <div class="container contact__grid">
       <div class="contact__intro" data-reveal>
-        <p class="eyebrow eyebrow--gold">Contacto</p>
-        <h2 class="section-title section-title--light" id="contacto-title">Hablemos de <span class="text-grad">tu próximo viaje</span></h2>
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">10</span>Contacto</p>
+        <h2 class="section-title section-title--light" id="contacto-title">Hablemos de <span class="hl-gold">tu próximo viaje</span></h2>
         <p class="lead lead--light">Escríbenos y te respondemos. El formulario prepara tu mensaje para enviarlo por WhatsApp{{#if site.email}} o por email{{/if}}; no guardamos nada en esta web.</p>
         <ul class="contact__quick">
           <li><a href="{{ site.phone.tel }}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{ site.phone.display }}</a></li>

@@ -210,6 +210,8 @@
           card.classList.add("is-tilting");
           card.style.setProperty("--ry", (px * 12).toFixed(2) + "deg");
           card.style.setProperty("--rx", (-py * 10).toFixed(2) + "deg");
+          card.style.setProperty("--mx", ((px + 0.5) * 100).toFixed(1) + "%");
+          card.style.setProperty("--my", ((py + 0.5) * 100).toFixed(1) + "%");
         });
       });
       card.addEventListener("pointerleave", function () {
@@ -217,6 +219,17 @@
         card.classList.remove("is-tilting");
         card.style.setProperty("--rx", "0deg");
         card.style.setProperty("--ry", "0deg");
+      });
+    });
+  }
+
+  /* Borde iluminado que sigue al cursor */
+  if (FINE) {
+    $$("[data-spot]").forEach(function (el) {
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", (e.clientX - r.left).toFixed(0) + "px");
+        el.style.setProperty("--my", (e.clientY - r.top).toFixed(0) + "px");
       });
     });
   }
@@ -548,7 +561,7 @@
       var text = btn.getAttribute("data-copy");
       var done = function () {
         btn.classList.add("is-done");
-        $("span", btn).textContent = "¡Copiado!";
+        $("span", btn).textContent = "Copiado";
         toast("Teléfono copiado: " + text);
         setTimeout(function () { btn.classList.remove("is-done"); $("span", btn).textContent = "Copiar"; }, 2200);
       };

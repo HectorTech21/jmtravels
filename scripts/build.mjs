@@ -45,7 +45,8 @@ const abs = (p) => (SITE_URL ? SITE_URL + p : p);
 const PRESETS = {
   hero: { widths: [640, 960, 1280, 1920], sizes: "100vw", eager: true },
   wide: { widths: [640, 960, 1400], sizes: "(min-width: 1024px) 60vw, 100vw" },
-  card: { widths: [400, 600, 900], sizes: "(min-width: 1200px) 300px, (min-width: 640px) 45vw, 92vw" },
+  card: { widths: [400, 600, 900], sizes: "(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" },
+  feature: { widths: [600, 900, 1400], sizes: "(min-width: 1000px) 780px, 92vw" },
   half: { widths: [480, 720, 900], sizes: "(min-width: 900px) 45vw, 92vw" }
 };
 function unsplash(src, w) {
@@ -81,11 +82,12 @@ function barcode(seed) {
 
 const destCards = site.destinations
   .map((d, i) => {
+    const feature = i === 0; // primer destino (Lima) destacado: especialidad de la agencia
     const media = d.img
-      ? img(d.img, "card", "bp__img")
+      ? img(d.img, feature ? "feature" : "card", "bp__img")
       : `<div class="bp__art" aria-hidden="true"><span>${esc(d.iata)}</span></div>`;
     return `
-        <li class="bp" data-reveal="card" style="--i:${i}">
+        <li class="bp${feature ? " bp--feature" : ""}" data-reveal="card">
           <article class="bp__inner" data-tilt>
             <div class="bp__media">${media}<span class="bp__country">${esc(d.country)}</span></div>
             <div class="bp__body">
