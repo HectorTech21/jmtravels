@@ -37,15 +37,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script>
-  /* Mejora progresiva: sin esta clase todo el contenido es visible. Si las animaciones
-     no arrancan en 3 s (JS bloqueado o fallo de red), se retira y se muestra todo. */
+  /* Mejora progresiva: sin estas clases todo el contenido es visible y el menú se muestra en línea.
+     Si main.js o las animaciones no arrancan en 3 s (JS bloqueado o fallo de red), se retiran. */
   (function (d) {
     var r = d.documentElement;
-    r.classList.add("js");
-    setTimeout(function () { if (!window.__jmdAnim) r.classList.remove("js"); }, 3000);
+    r.classList.add("js", "anim");
+    setTimeout(function () {
+      if (!window.__jmdAnim) r.classList.remove("anim");
+      if (!window.__jmdMain) r.classList.remove("js");
+    }, 3000);
   })(document);
 </script>
 

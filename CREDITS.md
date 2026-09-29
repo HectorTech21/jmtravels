@@ -10,7 +10,6 @@ Todas las fotografías proceden de [Unsplash](https://unsplash.com) y se usan ba
 |---|---|---|---|
 | `hero` | Silueta de un avión volando bajo un cielo de nubes densas | [Gabriel Garcia Marengo](https://unsplash.com/@gabrielgm) | [Ver en Unsplash](https://unsplash.com/photos/9jFECJnjLT8) |
 | `window` | Atardecer visto desde la ventanilla de un avión sobre el mar | [Lucas Myers](https://unsplash.com/@unthunk) | [Ver en Unsplash](https://unsplash.com/photos/xCTAd2NN4I0) |
-| `clouds` | Nubes vistas desde la ventanilla de un avión | [Vadim Sadovski](https://unsplash.com/@vadimsadovski) | [Ver en Unsplash](https://unsplash.com/photos/5MIyBZMf7us) |
 | `suitcases` | Pila de maletas de viaje de varios colores | [Erwan Hesry](https://unsplash.com/@erwanhesry) | [Ver en Unsplash](https://unsplash.com/photos/Q34YB7yjAxA) |
 | `beach` | Playa tropical de aguas turquesa con una persona nadando | [Cosmic Timetraveler](https://unsplash.com/@cosmictimetraveler) | [Ver en Unsplash](https://unsplash.com/photos/gweOVL1QjPo) |
 | `machupicchu` | Ruinas de Machu Picchu entre niebla y montañas, Perú | [Willian Justen de Vasconcellos](https://unsplash.com/@willianjusten) | [Ver en Unsplash](https://unsplash.com/photos/g_1mAmAAG0k) |
