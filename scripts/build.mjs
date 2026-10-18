@@ -61,35 +61,21 @@ function img(key, presetName = "card", cls = "") {
   const h = Math.round((maxW * p.h) / p.w);
   const srcset = pr.widths.map((w) => `${unsplash(p.src, w)} ${w}w`).join(", ");
   const loading = pr.eager ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"';
-  return `<img class="${esc(cls)}" src="${esc(unsplash(p.src, pr.widths[1] || maxW))}" srcset="${esc(srcset)}" sizes="${esc(pr.sizes)}" width="${maxW}" height="${h}" alt="${esc(p.alt)}" ${loading} onerror="this.classList.add('img-err')">`;
+  return `<img class="${esc(cls)}" src="${esc(unsplash(p.src, pr.widths[1] || maxW))}" srcset="${esc(srcset)}" sizes="${esc(pr.sizes)}" width="${maxW}" height="${h}" alt="${esc(p.alt)}" ${loading} onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')">`;
 }
 
 /* ---------- Bloques generados ---------- */
 const upper = (s) => s.toLocaleUpperCase("es-ES");
 
-function barcode(seed) {
-  // Código de barras decorativo determinista (SVG), a partir del código IATA.
-  let x = 0, bars = "";
-  let n = [...seed].reduce((a, c) => a * 31 + c.charCodeAt(0), 7);
-  for (let i = 0; i < 38; i++) {
-    n = (n * 1103515245 + 12345) & 0x7fffffff;
-    const w = 1 + (n % 3);
-    if (i % 2 === 0) bars += `<rect x="${x}" y="0" width="${w}" height="40"/>`;
-    x += w + 1;
-  }
-  return `<svg class="bp__barcode" viewBox="0 0 ${x} 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">${bars}</svg>`;
-}
-
 const destCards = site.destinations
-  .map((d, i) => {
-    const feature = i === 0; // primer destino (Lima) destacado: especialidad de la agencia
+  .map((d) => {
     const media = d.img
-      ? img(d.img, feature ? "feature" : "card", "bp__img")
+      ? img(d.img, "card", "bp__img")
       : `<div class="bp__art" aria-hidden="true"><span>${esc(d.iata)}</span></div>`;
     return `
-        <li class="bp${feature ? " bp--feature" : ""}" data-reveal="card">
-          <article class="bp__inner" data-tilt>
-            <div class="bp__media">${media}<span class="bp__country">${esc(d.country)}</span></div>
+        <li class="bp" data-reveal="card">
+          <article class="bp__inner">
+            <div class="bp__media" data-fallback="${esc(d.city)}">${media}<span class="bp__country">${esc(d.country)}</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a ${esc(d.city)}">
                 <span class="bp__code">MAD</span>
@@ -104,8 +90,7 @@ const destCards = site.destinations
               </dl>
             </div>
             <div class="bp__stub">
-              ${barcode(d.iata)}
-              <button type="button" class="btn btn--gold btn--sm" data-quote="${esc(d.id)}" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a ${esc(d.city)}</span></button>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="${esc(d.id)}">Pedir precio<span class="sr-only"> de vuelos a ${esc(d.city)}</span></button>
             </div>
           </article>
         </li>`;
@@ -313,7 +298,7 @@ const credits = Object.entries(photos)
   .join("\n");
 writeFileSync(
   join(ROOT, "CREDITS.md"),
-  `# Créditos\n\n> Archivo generado por \`npm run build\` desde \`src/data/photos.json\`.\n\n## Fotografías\n\nTodas las fotografías proceden de [Unsplash](https://unsplash.com) y se usan bajo la [Licencia Unsplash](https://unsplash.com/license) (uso gratuito, comercial incluido, sin atribución obligatoria; se acredita igualmente por cortesía). Se sirven desde \`images.unsplash.com\` con parámetros de tamaño y calidad (\`?auto=format&fit=crop&w=…&q=75\`).\n\n| Clave | Descripción (alt) | Autor | Foto |\n|---|---|---|---|\n${credits}\n\n## Tipografías\n\n- [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [DM Sans](https://fonts.google.com/specimen/DM+Sans) y [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — Google Fonts, SIL Open Font License 1.1.\n\n## Librerías\n\n- [GSAP](https://gsap.com) 3.15.0 + ScrollTrigger — GreenSock Standard License (uso gratuito).\n- [Lenis](https://github.com/darkroomengineering/lenis) 1.3.26 — MIT.\n\n## Logotipo\n\n- Logotipo de ${site.legalName}, propiedad de la empresa (\`assets/img/logo-original.jpg\`).\n`
+  `# Créditos\n\n> Archivo generado por \`npm run build\` desde \`src/data/photos.json\`.\n\n## Fotografías\n\nTodas las fotografías proceden de [Unsplash](https://unsplash.com) y se usan bajo la [Licencia Unsplash](https://unsplash.com/license) (uso gratuito, comercial incluido, sin atribución obligatoria; se acredita igualmente por cortesía). Se sirven desde \`images.unsplash.com\` con parámetros de tamaño y calidad (\`?auto=format&fit=crop&w=…&q=75\`).\n\n| Clave | Descripción (alt) | Autor | Foto |\n|---|---|---|---|\n${credits}\n\n## Tipografías\n\n- [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [DM Sans](https://fonts.google.com/specimen/DM+Sans) — Archivos variables Latin alojados localmente, procedentes de Fontsource 5.2.8 (registro npm). Licencia SIL Open Font License 1.1: textos íntegros en \`assets/fonts/*-OFL.txt\`.\n\n## Ilustración editorial local\n\n\`assets/img/journey-editorial.webp\`, \`assets/img/parcel-editorial.webp\` y \`assets/img/coast-editorial.webp\` son imágenes generadas con IA para esta web. Representan un paisaje aéreo, un paquete con una bolsa de viaje y una costa tropical imaginados: no documentan una ruta, destino, aeronave ni servicio concretos. Se sirven localmente y no sustituyen fotografías de la oficina o del equipo.\n\n## Librerías\n\n- [GSAP](https://gsap.com) 3.15.0 + ScrollTrigger — véase la licencia incluida en los archivos de la librería.\n\n## Logotipo\n\n- Logotipo de ${site.legalName}, propiedad de la empresa (\`assets/img/logo-original.jpg\`).\n`
 );
 
 /* ---------- public/: copia publicable (Vercel y hostings que esperan esa carpeta) ---------- */
