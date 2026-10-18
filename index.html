@@ -34,13 +34,25 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/dm-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
+
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script>
-  document.documentElement.classList.add("js");
-  setTimeout(function () { if (!window.__jmdMain) document.documentElement.classList.remove("js"); }, 3000);
+  /* Mejora progresiva: sin estas clases todo el contenido es visible y el menú se muestra en línea.
+     Si main.js o las animaciones no arrancan en 3 s (JS bloqueado o fallo de red), se retiran. */
+  (function (d) {
+    var r = d.documentElement;
+    r.classList.add("js", "anim");
+    setTimeout(function () {
+      if (!window.__jmdAnim) r.classList.remove("anim");
+      if (!window.__jmdMain) r.classList.remove("js");
+    }, 3000);
+  })(document);
 </script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":["TravelAgency","LocalBusiness"],"name":"JMD Travesías por el Mundo","alternateName":"JMD Travesías por el Mundo — Agencia de Viajes & Multiservicios","legalName":"JMD Travesías por el Mundo S.L.","taxID":"B88982244","slogan":"No somos virtuales. Somos reales.","description":"Agencia de viajes y multiservicios en Madrid especializada en vuelos a Latinoamérica con 2 maletas de 23 kg y paquetería puerta a puerta Madrid → Lima.","telephone":"+34687111168","image":"/og-image.png","logo":"/assets/img/logo-512.png","address":{"@type":"PostalAddress","streetAddress":"C/ Alcalá 414, Centro Comercial Alcalá Norte, Oficina 41, Planta 1","postalCode":"28027","addressLocality":"Madrid","addressRegion":"Comunidad de Madrid","addressCountry":"ES"},"hasMap":"https://www.google.com/maps/search/?api=1&query=Calle+de+Alcal%C3%A1+414+Madrid+Centro+Comercial+Alcal%C3%A1+Norte","areaServed":[{"@type":"City","name":"Madrid"},{"@type":"Country","name":"España"},{"@type":"Country","name":"Perú"},{"@type":"Country","name":"Colombia"},{"@type":"Country","name":"Venezuela"},{"@type":"Country","name":"Ecuador"},{"@type":"Country","name":"República Dominicana"},{"@type":"Country","name":"Bolivia"},{"@type":"Country","name":"Paraguay"},{"@type":"Country","name":"Argentina"}],"knowsAbout":["Vuelos a Latinoamérica con 2 maletas de 23 kg (2PC)","Paquetería puerta a puerta Madrid → Lima (Perú)","Hoteles y paquetes vacacionales","Seguros de viaje","Asesoría de documentación de viaje","Traslados y grupos"],"contactPoint":{"@type":"ContactPoint","telephone":"+34687111168","contactType":"customer service","availableLanguage":["es"]}}</script>
@@ -119,7 +131,7 @@
       </div>
     </nav>
 
-    <a class="btn btn--wa btn--sm header__cta" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic">
+    <a class="btn btn--wa btn--sm header__cta" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic" data-magnetic>
       <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span>
     </a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" data-burger>
@@ -134,55 +146,90 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="inicio" aria-labelledby="hero-title">
-    <div class="container">
-      <div class="hero__heading">
-        <h1 class="hero__title" id="hero-title" data-hero="title">Más cerca<br>de los tuyos.</h1>
-        <div class="hero__intro" data-hero="fade">
-          <p class="hero__lead">Vuelos a Latinoamérica con <strong>2 maletas de 23 kg</strong>. Una agencia en Madrid y personas que te acompañan desde el primer paso.</p>
-          <a class="btn btn--gold btn--lg" href="#cotizador">Consultar mi vuelo <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="hero__contact" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20precio%20de%20un%20vuelo%20con%202%20maletas%20de%2023%20kg%3A" target="_blank" rel="noopener" data-wa="flight">O hablemos por WhatsApp <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg></a>
+    <div class="hero__bg" aria-hidden="true" data-parallax>
+      <img class="hero__img" src="https://images.unsplash.com/photo-1428585020518-006f62259c2c?auto=format&amp;fit=crop&amp;w=960&amp;q=75" srcset="https://images.unsplash.com/photo-1428585020518-006f62259c2c?auto=format&amp;fit=crop&amp;w=640&amp;q=75 640w, https://images.unsplash.com/photo-1428585020518-006f62259c2c?auto=format&amp;fit=crop&amp;w=960&amp;q=75 960w, https://images.unsplash.com/photo-1428585020518-006f62259c2c?auto=format&amp;fit=crop&amp;w=1280&amp;q=75 1280w, https://images.unsplash.com/photo-1428585020518-006f62259c2c?auto=format&amp;fit=crop&amp;w=1920&amp;q=75 1920w" sizes="100vw" width="1920" height="1272" alt="Silueta de un avión volando bajo un cielo de nubes densas" fetchpriority="high" decoding="async" onerror="this.classList.add('img-err')">
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow eyebrow--light" data-hero="fade">
+          <span class="dot" aria-hidden="true"></span> Agencia de Viajes &amp; Multiservicios · Madrid
+        </p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="w">Vuela</span> <span class="w">a</span> <span class="w">Latinoamérica</span>
+          <span class="w">con</span> <span class="w hero__hl">2&nbsp;maletas</span> <span class="w">de</span> <span class="w hero__hl hero__hl--gold">23&nbsp;kg</span>
+        </h1>
+        <p class="hero__lead" data-hero="fade">
+          Vuelos desde Madrid con <strong>2PC incluidas</strong> y <strong>paquetería puerta a puerta Madrid → Lima</strong>.
+          Te atendemos en persona en nuestra oficina de C/ Alcalá 414.
+        </p>
+        <div class="hero__ctas" data-hero="fade">
+          <a class="btn btn--gold btn--lg" href="#cotizador" data-magnetic>
+            Pide tu precio <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+          <a class="btn btn--glass btn--lg" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20precio%20de%20un%20vuelo%20con%202%20maletas%20de%2023%20kg%3A" target="_blank" rel="noopener" data-wa="flight" data-magnetic>
+            <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp
+          </a>
         </div>
+        <ul class="hero__chips" data-hero="fade">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-bag"/></svg>2PC · 23 KG</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-seal"/></svg>Licencia CICMA 4321</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Oficina física en Madrid</li>
+        </ul>
       </div>
-      <div class="hero__visual" data-hero="visual">
-        <div class="hero__photo">
-          <img class="hero__img" src="/assets/img/journey-editorial.webp" width="1536" height="1024" alt="Ilustración fotográfica de un vuelo entre nubes y montañas al atardecer" fetchpriority="high" decoding="async">
-        </div>
-        <div class="hero__route">
-          <div class="route-card">
-            <p class="route-card__label">Una de nuestras especialidades</p>
-            <div class="route-card__cities"><span>Madrid <strong>MAD</strong></span><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg><span>Lima <strong>LIM</strong></span></div>
-            <svg class="route" viewBox="0 0 400 130" role="img" aria-labelledby="route-title">
-              <title id="route-title">Ruta de vuelo de Madrid a Lima</title>
-              <path class="route__ghost" d="M20 105 C 120 0, 280 0, 380 105"/>
-              <path class="route__path" id="routePath" d="M20 105 C 120 0, 280 0, 380 105"/>
-              <circle class="route__pin" cx="20" cy="105" r="5"/>
-              <circle class="route__pin" cx="380" cy="105" r="5"/>
-              <g class="route__plane" data-plane transform="translate(380 105) rotate(130)"><path d="M12 2 9 9 1 11v2l8 1 1 6-2 2v1l4-1 4 1v-1l-2-2 1-6 8-1v-2l-8-2z" transform="translate(-12 -12)"/></g>
-            </svg>
-            <div class="route-card__foot"><span>Tu equipaje también viaja.</span><strong>2 × 23 kg</strong></div>
-            <a href="#cotizador" class="route-card__link">Preparar mi consulta <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+
+      <div class="hero__route" data-hero="route">
+        <div class="route-card">
+          <div class="route-card__head">
+            <span class="route-card__label">Tarjeta de ruta</span>
+            <span class="route-card__label">2PC · 23KG</span>
+          </div>
+          <svg class="route" viewBox="0 0 400 220" role="img" aria-labelledby="route-title">
+            <title id="route-title">Ruta de vuelo de Madrid (MAD) a Lima (LIM)</title>
+            <defs>
+              <linearGradient id="routeGrad" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#ffc83d"/>
+                <stop offset=".55" stop-color="#ff7a1a"/>
+                <stop offset="1" stop-color="#ff3d8b"/>
+              </linearGradient>
+            </defs>
+            <path class="route__ghost" d="M40 170 C 120 20, 280 20, 360 150"/>
+            <path class="route__path" id="routePath" d="M40 170 C 120 20, 280 20, 360 150"/>
+            <circle class="route__pin" cx="40" cy="170" r="7"/>
+            <circle class="route__pin route__pin--end" cx="360" cy="150" r="7"/>
+            <circle class="route__ring" cx="360" cy="150" r="7"/>
+            <g class="route__plane" data-plane>
+              <path d="M12 2 9 9 1 11v2l8 1 1 6-2 2v1l4-1 4 1v-1l-2-2 1-6 8-1v-2l-8-2z" transform="translate(-12 -12)"/>
+            </g>
+          </svg>
+          <div class="route-card__foot">
+            <div><span class="route-card__code">MAD</span><span class="route-card__city">Madrid</span></div>
+            <div class="route-card__mid">
+              <span>Equipaje</span>
+              <strong>2 × 23 kg</strong>
+            </div>
+            <div class="ta-r"><span class="route-card__code">LIM</span><span class="route-card__city">Lima</span></div>
           </div>
         </div>
-        <p class="hero__caption">La ilusión de volver. La tranquilidad de tener a quién llamar.</p>
       </div>
-      <div class="hero__assurance" data-hero="fade"><p>Vuelos · Paquetería · Multiservicios</p><p>Oficina en C/ Alcalá 414, Madrid <span>Licencia CICMA 4321</span></p></div>
     </div>
   </section>
 
   <!-- ============ PANEL DE SALIDAS ============ -->
   <section class="departures" id="salidas" aria-labelledby="salidas-title">
     <div class="container">
-      <div class="section-head" data-reveal>
-        <h2 class="section-title" id="salidas-title">Tu próxima salida.</h2>
-        <p class="lead">De Madrid a Latinoamérica, con espacio para llevar lo tuyo. Elige un destino y cuéntanos cuándo quieres viajar.</p>
-        <a class="link-arrow" href="#destinos">Explorar 12 destinos <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="section-head section-head--light" data-reveal>
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">01</span>Salidas desde Madrid · MAD</p>
+        <h2 class="section-title" id="salidas-title">Tu próximo vuelo, <span class="hl-gold">con 2 maletas facturadas</span></h2>
       </div>
 
       <div class="board" data-board data-reveal>
         <div class="board__top">
-          <span class="board__title">Desde Madrid, hacia los tuyos</span>
+          <span class="board__title"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg> Salidas · Departures</span>
           <span class="board__clock" data-clock aria-hidden="true">MADRID</span>
-          <button class="board__toggle" type="button" data-board-toggle aria-pressed="false">Animar destinos</button>
+          <button class="board__toggle" type="button" data-board-toggle aria-pressed="false">Pausar panel</button>
         </div>
         <div class="board__head" aria-hidden="true">
           <span>Código</span><span>Destino</span><span class="board__h-bag">Equipaje</span><span>Estado</span>
@@ -225,7 +272,6 @@
             <span class="board__cell board__cell--status" data-len="11">PIDE PRECIO</span>
           </div>
         </div>
-        <p class="board__note">Destinos destacados, no horarios de vuelos. Confirmamos disponibilidad y tarifa al consultar.</p>
         <p class="sr-only">Destinos destacados desde Madrid, todos con 2 maletas de 23 kg: Lima (Perú), Bogotá (Colombia), Caracas (Venezuela), Valencia (Venezuela), Medellín (Colombia), Quito (Ecuador), Guayaquil (Ecuador), Santo Domingo (República Dominicana), Cusco (Perú), Santa Cruz (Bolivia), Asunción (Paraguay), Buenos Aires (Argentina). Precio: consultar.</p>
       </div>
     </div>
@@ -240,8 +286,8 @@
   <section class="specs" id="especialidades" aria-labelledby="specs-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <h2 class="section-title" id="specs-title">Lo que importa, contigo.</h2>
-        <p class="lead">Tú viajas con tus maletas. Tus paquetes llegan a Lima. Nosotros te ayudamos a preparar ambos caminos.</p>
+        <p class="eyebrow"><span class="eyebrow__n">02</span>Nuestras especialidades</p>
+        <h2 class="section-title" id="specs-title">Viaja con todo lo tuyo. <span class="hl">Envía lo que quieras a Lima.</span></h2>
       </div>
 
       <ul class="stats" data-reveal-group>
@@ -265,7 +311,7 @@
 
       <div class="specs__grid">
         <article class="spec spec--flight" data-reveal>
-          <div class="spec__media"><img src="/assets/img/journey-editorial.webp" width="1536" height="1024" alt="Ilustración fotográfica del horizonte desde un avión" loading="lazy" decoding="async" class="spec__img"></div>
+          <div class="spec__media"><img class="spec__img" src="https://images.unsplash.com/photo-1479888230021-c24f136d849f?auto=format&amp;fit=crop&amp;w=720&amp;q=75" srcset="https://images.unsplash.com/photo-1479888230021-c24f136d849f?auto=format&amp;fit=crop&amp;w=480&amp;q=75 480w, https://images.unsplash.com/photo-1479888230021-c24f136d849f?auto=format&amp;fit=crop&amp;w=720&amp;q=75 720w, https://images.unsplash.com/photo-1479888230021-c24f136d849f?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 900px) 45vw, 92vw" width="900" height="600" alt="Pila de maletas de viaje de varios colores" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"></div>
           <div class="spec__body">
             <span class="spec__icon"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></span>
             <h3>Vuelos a Latinoamérica con 2 maletas de 23 kg</h3>
@@ -274,7 +320,7 @@
           </div>
         </article>
         <article class="spec spec--parcel" data-reveal>
-          <div class="spec__media" data-fallback="Madrid → Lima"><img src="/assets/img/parcel-editorial.webp" width="1536" height="1024" alt="Ilustración fotográfica de un paquete preparado junto a una bolsa de viaje" loading="lazy" decoding="async" class="spec__img"></div>
+          <div class="spec__media"><img class="spec__img" src="https://images.unsplash.com/photo-1551818653-ad8adfb85fef?auto=format&amp;fit=crop&amp;w=720&amp;q=75" srcset="https://images.unsplash.com/photo-1551818653-ad8adfb85fef?auto=format&amp;fit=crop&amp;w=480&amp;q=75 480w, https://images.unsplash.com/photo-1551818653-ad8adfb85fef?auto=format&amp;fit=crop&amp;w=720&amp;q=75 720w, https://images.unsplash.com/photo-1551818653-ad8adfb85fef?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 900px) 45vw, 92vw" width="900" height="675" alt="Vista aérea de la costa de Playa Honda, Lima, Perú" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"></div>
           <div class="spec__body">
             <span class="spec__icon spec__icon--orange"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></span>
             <h3>Paquetería puerta a puerta Madrid → Lima</h3>
@@ -288,10 +334,11 @@
 
   <!-- ============ COTIZADOR DE VUELOS ============ -->
   <section class="quote" id="cotizador" aria-labelledby="cotizador-title">
-
+    <div class="quote__bg" aria-hidden="true"></div>
     <div class="container quote__grid">
       <div class="quote__intro" data-reveal>
-        <h2 class="section-title section-title--light" id="cotizador-title">Empecemos por tu vuelo.</h2>
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">03</span>Cotizador de vuelos</p>
+        <h2 class="section-title section-title--light" id="cotizador-title">Pide tu precio con <span class="hl-gold">2 maletas de 23 kg</span></h2>
         <p class="lead lead--light">Rellena los datos y te abrimos WhatsApp con el mensaje listo. Sin registros y sin compromiso: te respondemos con el precio.</p>
         <ul class="checks checks--light">
           <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Ida y vuelta o solo ida</li>
@@ -301,10 +348,8 @@
       </div>
 
       <form class="ticket" id="flight-form" novalidate data-reveal>
-        <noscript><p>Para preparar este mensaje, activa JavaScript o <a href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener">escríbenos por WhatsApp</a>.</p></noscript>
-        <fieldset class="form-fields" disabled data-form-fields>
         <div class="ticket__head">
-          <span class="ticket__brand">Tu consulta de vuelo</span>
+          <span class="ticket__brand">JMD · Boarding request</span>
           <span class="ticket__bag">2PC · 23KG</span>
         </div>
 
@@ -357,7 +402,6 @@
               <input id="f-adults" name="adults" type="number" min="1" max="20" value="1" inputmode="numeric">
               <button type="button" class="stepper__btn" data-step="1" aria-label="Un adulto más">+</button>
             </div>
-            <p class="field__error" id="f-adults-err"></p>
           </div>
           <div class="field">
             <label for="f-kids">Niños</label>
@@ -366,7 +410,6 @@
               <input id="f-kids" name="kids" type="number" min="0" max="20" value="0" inputmode="numeric">
               <button type="button" class="stepper__btn" data-step="1" aria-label="Un niño más">+</button>
             </div>
-            <p class="field__error" id="f-kids-err"></p>
           </div>
         </div>
 
@@ -377,11 +420,10 @@
         </div>
 
         <div class="ticket__tear" aria-hidden="true"></div>
-        <button class="btn btn--wa btn--block btn--lg" type="submit" disabled data-requires-js>
+        <button class="btn btn--wa btn--block btn--lg" type="submit" data-magnetic>
           <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Pedir precio por WhatsApp
         </button>
         <p class="ticket__note">Se abrirá WhatsApp con tu consulta al +34 687 11 11 68. Tú decides si la envías.</p>
-      </fieldset>
       </form>
     </div>
   </section>
@@ -390,13 +432,14 @@
   <section class="destinations" id="destinos" aria-labelledby="destinos-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <h2 class="section-title" id="destinos-title">¿Dónde te esperan?</h2>
+        <p class="eyebrow"><span class="eyebrow__n">04</span>Destinos destacados</p>
+        <h2 class="section-title" id="destinos-title">Tu tarjeta de embarque a <span class="hl">Latinoamérica</span></h2>
         <p class="lead">Todos con salida desde Madrid y 2 maletas de 23 kg. Pulsa «Pedir precio» y preparamos tu consulta.</p>
       </div>
       <ul class="bp-grid">
-        <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Lima"><img class="bp__img" src="https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="1350" alt="Atardecer dorado sobre el mar en la región de Lima, Perú" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Perú</span></div>
+        <li class="bp bp--feature" data-reveal="card">
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=900&amp;q=75" srcset="https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w, https://images.unsplash.com/photo-1508529044574-59120aab8253?auto=format&amp;fit=crop&amp;w=1400&amp;q=75 1400w" sizes="(min-width: 1000px) 780px, 92vw" width="1400" height="2100" alt="Atardecer dorado sobre el mar en la región de Lima, Perú" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Perú</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Lima">
                 <span class="bp__code">MAD</span>
@@ -411,13 +454,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="lima">Pedir precio<span class="sr-only"> de vuelos a Lima</span></button>
+              <svg class="bp__barcode" viewBox="0 0 117 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="40"/><rect x="8" y="0" width="2" height="40"/><rect x="15" y="0" width="2" height="40"/><rect x="21" y="0" width="1" height="40"/><rect x="26" y="0" width="2" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="42" y="0" width="1" height="40"/><rect x="47" y="0" width="3" height="40"/><rect x="54" y="0" width="2" height="40"/><rect x="61" y="0" width="3" height="40"/><rect x="68" y="0" width="3" height="40"/><rect x="74" y="0" width="3" height="40"/><rect x="80" y="0" width="3" height="40"/><rect x="86" y="0" width="1" height="40"/><rect x="91" y="0" width="3" height="40"/><rect x="99" y="0" width="1" height="40"/><rect x="104" y="0" width="2" height="40"/><rect x="111" y="0" width="1" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="lima" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Lima</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Bogotá"><img class="bp__img" src="https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="506" alt="Amanecer sobre colinas verdes en La Serrana, Colombia" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Colombia</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1486787284432-3749cdce2660?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="506" alt="Amanecer sobre colinas verdes en La Serrana, Colombia" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Colombia</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Bogotá">
                 <span class="bp__code">MAD</span>
@@ -432,13 +476,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="bogota">Pedir precio<span class="sr-only"> de vuelos a Bogotá</span></button>
+              <svg class="bp__barcode" viewBox="0 0 110 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="40"/><rect x="7" y="0" width="1" height="40"/><rect x="13" y="0" width="2" height="40"/><rect x="19" y="0" width="3" height="40"/><rect x="25" y="0" width="2" height="40"/><rect x="30" y="0" width="3" height="40"/><rect x="36" y="0" width="3" height="40"/><rect x="42" y="0" width="2" height="40"/><rect x="48" y="0" width="2" height="40"/><rect x="54" y="0" width="2" height="40"/><rect x="59" y="0" width="3" height="40"/><rect x="67" y="0" width="3" height="40"/><rect x="74" y="0" width="2" height="40"/><rect x="79" y="0" width="1" height="40"/><rect x="85" y="0" width="3" height="40"/><rect x="91" y="0" width="1" height="40"/><rect x="95" y="0" width="1" height="40"/><rect x="101" y="0" width="1" height="40"/><rect x="106" y="0" width="1" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="bogota" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Bogotá</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Caracas"><img class="bp__img" src="https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="1201" alt="Vista aérea de Cayo Sombrero, playa del Caribe venezolano" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Venezuela</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1538964173425-93884d739596?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="1201" alt="Vista aérea de Cayo Sombrero, playa del Caribe venezolano" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Venezuela</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Caracas">
                 <span class="bp__code">MAD</span>
@@ -453,13 +498,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="caracas">Pedir precio<span class="sr-only"> de vuelos a Caracas</span></button>
+              <svg class="bp__barcode" viewBox="0 0 108 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="40"/><rect x="6" y="0" width="3" height="40"/><rect x="14" y="0" width="1" height="40"/><rect x="20" y="0" width="1" height="40"/><rect x="25" y="0" width="2" height="40"/><rect x="32" y="0" width="1" height="40"/><rect x="36" y="0" width="3" height="40"/><rect x="43" y="0" width="2" height="40"/><rect x="50" y="0" width="2" height="40"/><rect x="56" y="0" width="1" height="40"/><rect x="61" y="0" width="2" height="40"/><rect x="66" y="0" width="1" height="40"/><rect x="70" y="0" width="2" height="40"/><rect x="76" y="0" width="2" height="40"/><rect x="82" y="0" width="1" height="40"/><rect x="88" y="0" width="2" height="40"/><rect x="93" y="0" width="2" height="40"/><rect x="100" y="0" width="1" height="40"/><rect x="104" y="0" width="1" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="caracas" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Caracas</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Valencia"><img class="bp__img" src="https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="1600" alt="Vista aérea de la costa azul de Choroní, Aragua, Venezuela" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Venezuela</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1548704686-f0a484c1bd67?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="1600" alt="Vista aérea de la costa azul de Choroní, Aragua, Venezuela" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Venezuela</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Valencia">
                 <span class="bp__code">MAD</span>
@@ -474,13 +520,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="valencia-ve">Pedir precio<span class="sr-only"> de vuelos a Valencia</span></button>
+              <svg class="bp__barcode" viewBox="0 0 116 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="1" height="40"/><rect x="6" y="0" width="1" height="40"/><rect x="12" y="0" width="2" height="40"/><rect x="18" y="0" width="3" height="40"/><rect x="26" y="0" width="1" height="40"/><rect x="32" y="0" width="3" height="40"/><rect x="40" y="0" width="1" height="40"/><rect x="44" y="0" width="2" height="40"/><rect x="50" y="0" width="3" height="40"/><rect x="57" y="0" width="2" height="40"/><rect x="63" y="0" width="1" height="40"/><rect x="69" y="0" width="2" height="40"/><rect x="74" y="0" width="3" height="40"/><rect x="81" y="0" width="2" height="40"/><rect x="87" y="0" width="1" height="40"/><rect x="93" y="0" width="3" height="40"/><rect x="101" y="0" width="2" height="40"/><rect x="106" y="0" width="1" height="40"/><rect x="111" y="0" width="2" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="valencia-ve" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Valencia</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Medellín"><img class="bp__img" src="https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="600" alt="Vista aérea de los lagos e islas de Guatapé, Antioquia, Colombia" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Colombia</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1570348447499-95d8d3b38ae3?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="600" alt="Vista aérea de los lagos e islas de Guatapé, Antioquia, Colombia" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Colombia</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Medellín">
                 <span class="bp__code">MAD</span>
@@ -495,13 +542,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="medellin">Pedir precio<span class="sr-only"> de vuelos a Medellín</span></button>
+              <svg class="bp__barcode" viewBox="0 0 118 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="40"/><rect x="5" y="0" width="3" height="40"/><rect x="12" y="0" width="2" height="40"/><rect x="17" y="0" width="2" height="40"/><rect x="24" y="0" width="3" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="39" y="0" width="2" height="40"/><rect x="46" y="0" width="1" height="40"/><rect x="51" y="0" width="2" height="40"/><rect x="58" y="0" width="2" height="40"/><rect x="63" y="0" width="3" height="40"/><rect x="70" y="0" width="2" height="40"/><rect x="76" y="0" width="2" height="40"/><rect x="81" y="0" width="2" height="40"/><rect x="87" y="0" width="3" height="40"/><rect x="94" y="0" width="3" height="40"/><rect x="101" y="0" width="1" height="40"/><rect x="105" y="0" width="2" height="40"/><rect x="111" y="0" width="2" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="medellin" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Medellín</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Quito"><img class="bp__img" src="https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="631" alt="Colibrí esmeralda andino junto a flores rosas en Tandayapa, cerca de Quito, Ecuador" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Ecuador</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1518593929011-2b5ef6be57c7?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="631" alt="Colibrí esmeralda andino junto a flores rosas en Tandayapa, cerca de Quito, Ecuador" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Ecuador</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Quito">
                 <span class="bp__code">MAD</span>
@@ -516,13 +564,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="quito">Pedir precio<span class="sr-only"> de vuelos a Quito</span></button>
+              <svg class="bp__barcode" viewBox="0 0 110 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="40"/><rect x="8" y="0" width="3" height="40"/><rect x="15" y="0" width="1" height="40"/><rect x="21" y="0" width="1" height="40"/><rect x="25" y="0" width="3" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="37" y="0" width="2" height="40"/><rect x="43" y="0" width="3" height="40"/><rect x="50" y="0" width="2" height="40"/><rect x="57" y="0" width="1" height="40"/><rect x="62" y="0" width="2" height="40"/><rect x="69" y="0" width="2" height="40"/><rect x="74" y="0" width="1" height="40"/><rect x="78" y="0" width="1" height="40"/><rect x="82" y="0" width="2" height="40"/><rect x="87" y="0" width="1" height="40"/><rect x="91" y="0" width="3" height="40"/><rect x="97" y="0" width="3" height="40"/><rect x="105" y="0" width="1" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="quito" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Quito</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Guayaquil"><img class="bp__img" src="https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="600" alt="Vista aérea de la playa de Santa Marianita, en la costa de Ecuador" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Ecuador</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1464703798045-7a86b08ced50?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="600" alt="Vista aérea de la playa de Santa Marianita, en la costa de Ecuador" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Ecuador</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Guayaquil">
                 <span class="bp__code">MAD</span>
@@ -537,13 +586,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="guayaquil">Pedir precio<span class="sr-only"> de vuelos a Guayaquil</span></button>
+              <svg class="bp__barcode" viewBox="0 0 125 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="40"/><rect x="7" y="0" width="2" height="40"/><rect x="14" y="0" width="3" height="40"/><rect x="22" y="0" width="2" height="40"/><rect x="29" y="0" width="2" height="40"/><rect x="34" y="0" width="2" height="40"/><rect x="39" y="0" width="2" height="40"/><rect x="46" y="0" width="3" height="40"/><rect x="53" y="0" width="3" height="40"/><rect x="59" y="0" width="2" height="40"/><rect x="65" y="0" width="3" height="40"/><rect x="72" y="0" width="1" height="40"/><rect x="78" y="0" width="2" height="40"/><rect x="85" y="0" width="3" height="40"/><rect x="93" y="0" width="3" height="40"/><rect x="99" y="0" width="3" height="40"/><rect x="106" y="0" width="3" height="40"/><rect x="113" y="0" width="2" height="40"/><rect x="119" y="0" width="2" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="guayaquil" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Guayaquil</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Santo Domingo"><img class="bp__img" src="https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="600" alt="Palmeras bajo un cielo con nubes en Punta Cana, República Dominicana" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">República Dominicana</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1421284621639-884f4129b61d?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="600" alt="Palmeras bajo un cielo con nubes en Punta Cana, República Dominicana" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">República Dominicana</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Santo Domingo">
                 <span class="bp__code">MAD</span>
@@ -558,13 +608,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="santo-domingo">Pedir precio<span class="sr-only"> de vuelos a Santo Domingo</span></button>
+              <svg class="bp__barcode" viewBox="0 0 103 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="1" height="40"/><rect x="6" y="0" width="2" height="40"/><rect x="12" y="0" width="3" height="40"/><rect x="19" y="0" width="1" height="40"/><rect x="25" y="0" width="1" height="40"/><rect x="30" y="0" width="2" height="40"/><rect x="35" y="0" width="1" height="40"/><rect x="39" y="0" width="1" height="40"/><rect x="43" y="0" width="2" height="40"/><rect x="48" y="0" width="1" height="40"/><rect x="53" y="0" width="2" height="40"/><rect x="58" y="0" width="1" height="40"/><rect x="63" y="0" width="2" height="40"/><rect x="69" y="0" width="1" height="40"/><rect x="74" y="0" width="3" height="40"/><rect x="80" y="0" width="3" height="40"/><rect x="86" y="0" width="1" height="40"/><rect x="90" y="0" width="2" height="40"/><rect x="97" y="0" width="2" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="santo-domingo" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Santo Domingo</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Cusco"><img class="bp__img" src="https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="900" alt="Vista aérea de Machu Picchu, en la región de Cusco, Perú" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Perú</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1415804941191-bc0c3bbac10d?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="900" alt="Vista aérea de Machu Picchu, en la región de Cusco, Perú" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Perú</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Cusco">
                 <span class="bp__code">MAD</span>
@@ -579,13 +630,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="cusco">Pedir precio<span class="sr-only"> de vuelos a Cusco</span></button>
+              <svg class="bp__barcode" viewBox="0 0 104 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="40"/><rect x="5" y="0" width="1" height="40"/><rect x="11" y="0" width="2" height="40"/><rect x="16" y="0" width="2" height="40"/><rect x="22" y="0" width="2" height="40"/><rect x="27" y="0" width="1" height="40"/><rect x="33" y="0" width="3" height="40"/><rect x="39" y="0" width="3" height="40"/><rect x="47" y="0" width="2" height="40"/><rect x="53" y="0" width="1" height="40"/><rect x="57" y="0" width="1" height="40"/><rect x="63" y="0" width="2" height="40"/><rect x="68" y="0" width="1" height="40"/><rect x="72" y="0" width="1" height="40"/><rect x="78" y="0" width="1" height="40"/><rect x="84" y="0" width="2" height="40"/><rect x="90" y="0" width="1" height="40"/><rect x="94" y="0" width="1" height="40"/><rect x="98" y="0" width="2" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="cusco" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Cusco</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Santa Cruz"><img class="bp__img" src="https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="614" alt="Cielo reflejado como un espejo en el Salar de Uyuni, Bolivia" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Bolivia</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1427464407917-c817c9a0a6f6?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="614" alt="Cielo reflejado como un espejo en el Salar de Uyuni, Bolivia" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Bolivia</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Santa Cruz">
                 <span class="bp__code">MAD</span>
@@ -600,13 +652,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="santa-cruz">Pedir precio<span class="sr-only"> de vuelos a Santa Cruz</span></button>
+              <svg class="bp__barcode" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="40"/><rect x="6" y="0" width="2" height="40"/><rect x="12" y="0" width="3" height="40"/><rect x="20" y="0" width="1" height="40"/><rect x="26" y="0" width="1" height="40"/><rect x="31" y="0" width="1" height="40"/><rect x="36" y="0" width="2" height="40"/><rect x="43" y="0" width="1" height="40"/><rect x="48" y="0" width="3" height="40"/><rect x="56" y="0" width="2" height="40"/><rect x="63" y="0" width="1" height="40"/><rect x="69" y="0" width="3" height="40"/><rect x="77" y="0" width="3" height="40"/><rect x="83" y="0" width="3" height="40"/><rect x="89" y="0" width="1" height="40"/><rect x="95" y="0" width="2" height="40"/><rect x="100" y="0" width="2" height="40"/><rect x="106" y="0" width="1" height="40"/><rect x="112" y="0" width="3" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="santa-cruz" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Santa Cruz</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Asunción"><div class="bp__art" aria-hidden="true"><span>ASU</span></div><span class="bp__country">Paraguay</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><div class="bp__art" aria-hidden="true"><span>ASU</span></div><span class="bp__country">Paraguay</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Asunción">
                 <span class="bp__code">MAD</span>
@@ -621,13 +674,14 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="asuncion">Pedir precio<span class="sr-only"> de vuelos a Asunción</span></button>
+              <svg class="bp__barcode" viewBox="0 0 119 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="3" height="40"/><rect x="7" y="0" width="3" height="40"/><rect x="14" y="0" width="2" height="40"/><rect x="20" y="0" width="1" height="40"/><rect x="25" y="0" width="2" height="40"/><rect x="32" y="0" width="2" height="40"/><rect x="37" y="0" width="1" height="40"/><rect x="43" y="0" width="2" height="40"/><rect x="48" y="0" width="2" height="40"/><rect x="54" y="0" width="2" height="40"/><rect x="59" y="0" width="3" height="40"/><rect x="67" y="0" width="3" height="40"/><rect x="73" y="0" width="1" height="40"/><rect x="77" y="0" width="3" height="40"/><rect x="85" y="0" width="2" height="40"/><rect x="91" y="0" width="3" height="40"/><rect x="98" y="0" width="3" height="40"/><rect x="106" y="0" width="3" height="40"/><rect x="112" y="0" width="2" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="asuncion" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Asunción</span></button>
             </div>
           </article>
         </li>
         <li class="bp" data-reveal="card">
-          <article class="bp__inner">
-            <div class="bp__media" data-fallback="Buenos Aires"><img class="bp__img" src="https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="528" alt="Embarcación blanca sobre el agua en Buenos Aires, Argentina" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')"><span class="bp__country">Argentina</span></div>
+          <article class="bp__inner" data-tilt>
+            <div class="bp__media"><img class="bp__img" src="https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=600&amp;q=75" srcset="https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=400&amp;q=75 400w, https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=600&amp;q=75 600w, https://images.unsplash.com/photo-1510792047925-c55a452bbad7?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 1000px) 380px, (min-width: 640px) 45vw, 92vw" width="900" height="528" alt="Embarcación blanca sobre el agua en Buenos Aires, Argentina" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"><span class="bp__country">Argentina</span></div>
             <div class="bp__body">
               <div class="bp__route" aria-label="Ruta Madrid a Buenos Aires">
                 <span class="bp__code">MAD</span>
@@ -642,18 +696,19 @@
               </dl>
             </div>
             <div class="bp__stub">
-              <button type="button" class="btn btn--gold btn--sm" data-quote="buenos-aires">Pedir precio<span class="sr-only"> de vuelos a Buenos Aires</span></button>
+              <svg class="bp__barcode" viewBox="0 0 117 40" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="0" y="0" width="2" height="40"/><rect x="6" y="0" width="2" height="40"/><rect x="12" y="0" width="3" height="40"/><rect x="18" y="0" width="3" height="40"/><rect x="24" y="0" width="1" height="40"/><rect x="30" y="0" width="3" height="40"/><rect x="37" y="0" width="3" height="40"/><rect x="45" y="0" width="3" height="40"/><rect x="53" y="0" width="3" height="40"/><rect x="60" y="0" width="2" height="40"/><rect x="65" y="0" width="3" height="40"/><rect x="72" y="0" width="1" height="40"/><rect x="77" y="0" width="2" height="40"/><rect x="84" y="0" width="1" height="40"/><rect x="90" y="0" width="1" height="40"/><rect x="94" y="0" width="1" height="40"/><rect x="100" y="0" width="1" height="40"/><rect x="105" y="0" width="2" height="40"/><rect x="110" y="0" width="2" height="40"/></svg>
+              <button type="button" class="btn btn--gold btn--sm" data-quote="buenos-aires" data-magnetic>Pedir precio<span class="sr-only"> de vuelos a Buenos Aires</span></button>
             </div>
           </article>
         </li>
         <li class="bp bp--cta" data-reveal="card">
           <div class="bp-cta">
-            <p class="bp-cta__route">Tu próximo destino</p>
+            <p class="bp-cta__route" aria-hidden="true">MAD <span>→</span> ???</p>
             <div class="bp-cta__text">
               <h3>¿Tu destino no está en la lista?</h3>
               <p>Pídenos precio para cualquier otro destino y te contamos qué opciones de equipaje tiene.</p>
             </div>
-            <button type="button" class="btn btn--gold" data-quote="otro">Pedir precio de otro destino</button>
+            <button type="button" class="btn btn--gold" data-quote="otro" data-magnetic>Pedir precio de otro destino</button>
           </div>
         </li>
       </ul>
@@ -664,7 +719,8 @@
   <section class="parcel" id="paqueteria" aria-labelledby="paqueteria-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <h2 class="section-title" id="paqueteria-title">Tu paquete, hasta Lima.</h2>
+        <p class="eyebrow eyebrow--orange"><span class="eyebrow__n">05</span>Paquetería puerta a puerta</p>
+        <h2 class="section-title" id="paqueteria-title">De Madrid a la puerta de tu casa <span class="hl hl--orange">en Lima</span></h2>
         <p class="lead">Calcula el peso a facturar de tu envío y pide tu presupuesto por WhatsApp.</p>
       </div>
 
@@ -675,10 +731,10 @@
         </svg>
         <span class="parcel-route__box" data-parcel-box aria-hidden="true"><svg class="icon"><use href="#i-box"/></svg></span>
         <ol class="steps">
-          <li class="step"><h3>Nos cuentas qué envías</h3><p>Peso, medidas, número de bultos y distrito de entrega en Lima.</p></li>
-          <li class="step"><h3>Te damos precio</h3><p>Calculamos el peso a facturar (real o volumétrico, el mayor) y te respondemos.</p></li>
-          <li class="step"><h3>Preparamos el envío</h3><p>Te orientamos sobre embalaje y contenido permitido en envíos a Perú.</p></li>
-          <li class="step"><h3>Entrega en Lima</h3><p>Tu paquete llega a la puerta de destino en Lima.</p></li>
+          <li class="step"><span class="step__n">01</span><h3>Nos cuentas qué envías</h3><p>Peso, medidas, número de bultos y distrito de entrega en Lima.</p></li>
+          <li class="step"><span class="step__n">02</span><h3>Te damos precio</h3><p>Calculamos el peso a facturar (real o volumétrico, el mayor) y te respondemos.</p></li>
+          <li class="step"><span class="step__n">03</span><h3>Preparamos el envío</h3><p>Te orientamos sobre embalaje y contenido permitido en envíos a Perú.</p></li>
+          <li class="step"><span class="step__n">04</span><h3>Entrega en Lima</h3><p>Tu paquete llega a la puerta de destino en Lima.</p></li>
         </ol>
       </div>
 
@@ -716,8 +772,6 @@
 
         <!-- Cotizador de paquetería -->
         <form class="panel panel--dark" id="parcel-form" novalidate data-reveal>
-        <noscript><p>Para preparar este mensaje, activa JavaScript o <a href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener">escríbenos por WhatsApp</a>.</p></noscript>
-        <fieldset class="form-fields" disabled data-form-fields>
           <div class="panel__head">
             <span class="panel__icon panel__icon--orange"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></span>
             <div>
@@ -743,7 +797,6 @@
                 <input id="p-pcs" name="pcs" type="number" min="1" max="50" value="1" inputmode="numeric">
                 <button type="button" class="stepper__btn" data-step="1" aria-label="Un bulto más">+</button>
               </div>
-            <p class="field__error" id="p-pcs-err"></p>
             </div>
           </div>
           <div class="field">
@@ -760,12 +813,11 @@
             <textarea id="p-content" name="content" rows="3" required placeholder="Ej.: ropa, calzado, libros…"></textarea>
             <p class="field__error" id="p-content-err"></p>
           </div>
-          <button class="btn btn--wa btn--block btn--lg" type="submit" disabled data-requires-js>
+          <button class="btn btn--wa btn--block btn--lg" type="submit" data-magnetic>
             <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Pedir precio del envío
           </button>
           <p class="panel__note">Precio: consultar. Te respondemos por WhatsApp.</p>
-        </fieldset>
-      </form>
+        </form>
       </div>
     </div>
   </section>
@@ -774,40 +826,40 @@
   <section class="services" id="servicios" aria-labelledby="servicios-title">
     <div class="container">
       <div class="section-head" data-reveal>
-        <h2 class="section-title" id="servicios-title">Un viaje. Todo resuelto.</h2>
-        <p class="lead">Vuelos, alojamiento y lo que necesitas para salir con tranquilidad. Lo organizamos contigo en nuestra oficina de Madrid.</p>
+        <p class="eyebrow"><span class="eyebrow__n">06</span>Agencia de viajes &amp; multiservicios</p>
+        <h2 class="section-title" id="servicios-title">Todo tu viaje, <span class="hl">en una sola oficina</span></h2>
       </div>
       <ul class="bento">
         <li class="svc svc--photo svc--xl" data-reveal>
-          <img src="/assets/img/coast-editorial.webp" width="1536" height="1024" alt="Ilustración fotográfica de una costa tropical imaginada" loading="lazy" decoding="async" class="svc__img">
+          <img class="svc__img" src="https://images.unsplash.com/photo-1434600705575-4285a88363a8?auto=format&amp;fit=crop&amp;w=960&amp;q=75" srcset="https://images.unsplash.com/photo-1434600705575-4285a88363a8?auto=format&amp;fit=crop&amp;w=640&amp;q=75 640w, https://images.unsplash.com/photo-1434600705575-4285a88363a8?auto=format&amp;fit=crop&amp;w=960&amp;q=75 960w, https://images.unsplash.com/photo-1434600705575-4285a88363a8?auto=format&amp;fit=crop&amp;w=1400&amp;q=75 1400w" sizes="(min-width: 1024px) 60vw, 100vw" width="1400" height="931" alt="Playa tropical de aguas turquesa con una persona nadando" loading="lazy" decoding="async" onerror="this.classList.add('img-err')">
           <div class="svc__body">
             <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-hotel"/></svg></span>
             <h3>Hoteles y paquetes vacacionales</h3>
             <p>Reservamos tu alojamiento o un paquete completo para tus vacaciones.</p>
           </div>
         </li>
-        <li class="svc" data-reveal>
+        <li class="svc" data-reveal data-spot>
           <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></span>
           <h3>Vuelos con 2PC</h3>
           <p>Vuelos a Latinoamérica con 2 maletas de 23 kg facturadas.</p>
         </li>
-        <li class="svc" data-reveal>
+        <li class="svc" data-reveal data-spot>
           <span class="svc__icon svc__icon--orange"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></span>
           <h3>Paquetería a Lima</h3>
           <p>Envíos puerta a puerta desde Madrid hasta Lima (Perú).</p>
         </li>
-        <li class="svc" data-reveal>
+        <li class="svc" data-reveal data-spot>
           <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-umbrella"/></svg></span>
           <h3>Seguros de viaje</h3>
           <p>Viaja tranquilo con un seguro adaptado a tu viaje.</p>
         </li>
-        <li class="svc" data-reveal>
+        <li class="svc" data-reveal data-spot>
           <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg></span>
           <h3>Documentación de viaje</h3>
           <p>Te asesoramos sobre la documentación que necesitas para viajar.</p>
         </li>
         <li class="svc svc--photo" data-reveal>
-          <img class="svc__img" src="https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=720&amp;q=75" srcset="https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=480&amp;q=75 480w, https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=720&amp;q=75 720w, https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 900px) 45vw, 92vw" width="900" height="600" alt="Ruinas de Machu Picchu entre niebla y montañas, Perú" loading="lazy" decoding="async" onerror="this.classList.add('img-err');this.parentElement.classList.add('media-fallback')">
+          <img class="svc__img" src="https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=720&amp;q=75" srcset="https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=480&amp;q=75 480w, https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=720&amp;q=75 720w, https://images.unsplash.com/photo-1525915818695-5b1a033247f1?auto=format&amp;fit=crop&amp;w=900&amp;q=75 900w" sizes="(min-width: 900px) 45vw, 92vw" width="900" height="600" alt="Ruinas de Machu Picchu entre niebla y montañas, Perú" loading="lazy" decoding="async" onerror="this.classList.add('img-err')">
           <div class="svc__body">
             <span class="svc__icon"><svg class="icon" aria-hidden="true"><use href="#i-bus"/></svg></span>
             <h3>Traslados y grupos</h3>
@@ -820,9 +872,10 @@
 
   <!-- ============ NO SOMOS VIRTUALES ============ -->
   <section class="real" id="nosotros" aria-labelledby="real-title" data-real>
-    <div class="real__bg" aria-hidden="true"><img src="/assets/img/journey-editorial.webp" width="1536" height="1024" alt="" loading="lazy" decoding="async" class="real__img"></div>
+    <div class="real__bg" aria-hidden="true"><img class="real__img" src="https://images.unsplash.com/photo-1526539535687-97010dfc3e08?auto=format&amp;fit=crop&amp;w=960&amp;q=75" srcset="https://images.unsplash.com/photo-1526539535687-97010dfc3e08?auto=format&amp;fit=crop&amp;w=640&amp;q=75 640w, https://images.unsplash.com/photo-1526539535687-97010dfc3e08?auto=format&amp;fit=crop&amp;w=960&amp;q=75 960w, https://images.unsplash.com/photo-1526539535687-97010dfc3e08?auto=format&amp;fit=crop&amp;w=1400&amp;q=75 1400w" sizes="(min-width: 1024px) 60vw, 100vw" width="1400" height="1050" alt="Atardecer visto desde la ventanilla de un avión sobre el mar" loading="lazy" decoding="async" onerror="this.classList.add('img-err')"></div>
     <div class="real__pin">
       <div class="container">
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">07</span>Nuestro lema</p>
         <h2 class="real__title" id="real-title">
           <span class="real__line"><span class="rw">No</span> <span class="rw">somos</span> <span class="rw">virtuales.</span></span>
           <span class="real__line real__line--accent"><span class="rw">Somos</span> <span class="rw">reales.</span></span>
@@ -841,7 +894,8 @@
   <section class="office" id="oficina" aria-labelledby="oficina-title">
     <div class="container office__grid">
       <div class="office__info" data-reveal>
-        <h2 class="section-title" id="oficina-title">Nos vemos en Madrid.</h2>
+        <p class="eyebrow"><span class="eyebrow__n">08</span>Visítanos</p>
+        <h2 class="section-title" id="oficina-title">Nuestra oficina <span class="hl">en Madrid</span></h2>
         <address class="office__address">
           <strong>JMD Travesías por el Mundo</strong><br>
           C/ Alcalá 414<br>
@@ -863,10 +917,10 @@
         </ul>
 
         <div class="office__ctas">
-          <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+de+Alcal%C3%A1+414+Madrid+Centro+Comercial+Alcal%C3%A1+Norte" target="_blank" rel="noopener">
+          <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+de+Alcal%C3%A1+414+Madrid+Centro+Comercial+Alcal%C3%A1+Norte" target="_blank" rel="noopener" data-magnetic>
             <svg class="icon" aria-hidden="true"><use href="#i-map"/></svg> Cómo llegar (Google Maps)
           </a>
-          <a class="btn btn--wa" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic">
+          <a class="btn btn--wa" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic" data-magnetic>
             <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp
           </a>
         </div>
@@ -896,7 +950,8 @@
   <section class="faq" id="faq" aria-labelledby="faq-title">
     <div class="container faq__grid">
       <div class="section-head section-head--sticky" data-reveal>
-        <h2 class="section-title" id="faq-title">Antes de hacer las maletas.</h2>
+        <p class="eyebrow"><span class="eyebrow__n">09</span>Preguntas frecuentes</p>
+        <h2 class="section-title" id="faq-title">Resolvemos <span class="hl">tus dudas</span></h2>
         <p class="lead">¿No encuentras tu respuesta? Llámanos al <a href="tel:+34687111168">+34 687 11 11 68</a> o escríbenos por WhatsApp.</p>
       </div>
       <div class="faq__list" data-reveal>
@@ -942,7 +997,8 @@
   <section class="contact" id="contacto" aria-labelledby="contacto-title">
     <div class="container contact__grid">
       <div class="contact__intro" data-reveal>
-        <h2 class="section-title section-title--light" id="contacto-title">Cuéntanos tu próximo viaje.</h2>
+        <p class="eyebrow eyebrow--dark"><span class="eyebrow__n">10</span>Contacto</p>
+        <h2 class="section-title section-title--light" id="contacto-title">Hablemos de <span class="hl-gold">tu próximo viaje</span></h2>
         <p class="lead lead--light">Escríbenos y te respondemos. El formulario prepara tu mensaje para enviarlo por WhatsApp; no guardamos nada en esta web.</p>
         <ul class="contact__quick">
           <li><a href="tel:+34687111168"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>+34 687 11 11 68</a></li>
@@ -953,8 +1009,6 @@
       </div>
 
       <form class="panel contact__form" id="contact-form" novalidate data-reveal>
-        <noscript><p>Para preparar este mensaje, activa JavaScript o <a href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener">escríbenos por WhatsApp</a>.</p></noscript>
-        <fieldset class="form-fields" disabled data-form-fields>
         <div class="grid-2">
           <div class="field">
             <label for="k-name">Nombre</label>
@@ -993,24 +1047,23 @@
         </div>
         <div class="field field--check">
           <input id="k-rgpd" name="rgpd" type="checkbox" required>
-          <label for="k-rgpd">He leído y acepto la <a href="/privacidad.html" target="_blank" rel="noopener">política de privacidad</a>.</label>
+          <label for="k-rgpd">He leído y acepto la <a href="/privacidad.html" target="_blank">política de privacidad</a>.</label>
           <p class="field__error" id="k-rgpd-err"></p>
         </div>
         <p class="rgpd-info"><strong>Responsable:</strong> JMD Travesías por el Mundo S.L. <strong>Finalidad:</strong> responder a tu consulta. <strong>Legitimación:</strong> tu consentimiento. <strong>Derechos:</strong> acceso, rectificación, supresión y demás derechos, como se explica en la <a href="/privacidad.html">política de privacidad</a>.</p>
         <div class="contact__actions">
-          <button class="btn btn--wa btn--lg" type="submit" disabled data-requires-js data-send="wa">
+          <button class="btn btn--wa btn--lg" type="submit" data-send="wa" data-magnetic>
             <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg> Enviar por WhatsApp
           </button>
           
         </div>
-      </fieldset>
       </form>
     </div>
   </section>
-  <noscript><div class="container nojs-contact"><p>Para preparar una consulta personalizada necesitas JavaScript. También puedes <a href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener">escribirnos directamente por WhatsApp</a> o llamar al <a href="tel:+34687111168">+34 687 11 11 68</a>.</p></div></noscript>
 </main>
 
 <footer class="footer">
+  <div class="footer__glow" aria-hidden="true"></div>
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
@@ -1061,16 +1114,16 @@
       </div>
     </div>
 
-    <p class="footer__wordmark" aria-hidden="true">Travesías.</p>
     <div class="footer__legal">
       <p>© <span data-year>2026</span> JMD Travesías por el Mundo S.L. · CIF B88982244 · Agencia de viajes con licencia CICMA 4321</p>
       <p>C/ Alcalá 414, Centro Comercial Alcalá Norte, Oficina 41, Planta 1, 28027 Madrid (Ciudad Lineal)</p>
-      <p class="footer__credits">Fotografías de destinos: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>. Ilustraciones editoriales generadas con IA. <a href="/CREDITS.md">Créditos de imágenes y fuentes</a>.</p>
+      <p class="footer__credits">Fotografías de <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> (ver créditos en CREDITS.md del proyecto).</p>
     </div>
   </div>
 </footer>
 
 <a class="fab-wa" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic" aria-label="Escríbenos por WhatsApp al +34 687 11 11 68">
+  <span class="fab-wa__pulse" aria-hidden="true"></span>
   <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 <div class="toast" role="status" aria-live="polite" data-toast></div>
@@ -1078,6 +1131,7 @@
 <script src="/assets/js/config.js" defer></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
 
 </body>

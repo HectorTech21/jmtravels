@@ -34,13 +34,24 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 
-<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/dm-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@500;700&display=swap"></noscript>
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script>
-  document.documentElement.classList.add("js");
-  setTimeout(function () { if (!window.__jmdMain) document.documentElement.classList.remove("js"); }, 3000);
+  /* Mejora progresiva: sin estas clases todo el contenido es visible y el menú se muestra en línea.
+     Si main.js o las animaciones no arrancan en 3 s (JS bloqueado o fallo de red), se retiran. */
+  (function (d) {
+    var r = d.documentElement;
+    r.classList.add("js", "anim");
+    setTimeout(function () {
+      if (!window.__jmdAnim) r.classList.remove("anim");
+      if (!window.__jmdMain) r.classList.remove("js");
+    }, 3000);
+  })(document);
 </script>
 
 </head>
@@ -118,7 +129,7 @@
       </div>
     </nav>
 
-    <a class="btn btn--wa btn--sm header__cta" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic">
+    <a class="btn btn--wa btn--sm header__cta" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic" data-magnetic>
       <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span>
     </a>
     <button class="burger" type="button" aria-controls="menu" aria-expanded="false" data-burger>
@@ -139,6 +150,7 @@
   </section>
 </main>
 <footer class="footer">
+  <div class="footer__glow" aria-hidden="true"></div>
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
@@ -189,16 +201,16 @@
       </div>
     </div>
 
-    <p class="footer__wordmark" aria-hidden="true">Travesías.</p>
     <div class="footer__legal">
       <p>© <span data-year>2026</span> JMD Travesías por el Mundo S.L. · CIF B88982244 · Agencia de viajes con licencia CICMA 4321</p>
       <p>C/ Alcalá 414, Centro Comercial Alcalá Norte, Oficina 41, Planta 1, 28027 Madrid (Ciudad Lineal)</p>
-      <p class="footer__credits">Fotografías de destinos: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>. Ilustraciones editoriales generadas con IA. <a href="/CREDITS.md">Créditos de imágenes y fuentes</a>.</p>
+      <p class="footer__credits">Fotografías de <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> (ver créditos en CREDITS.md del proyecto).</p>
     </div>
   </div>
 </footer>
 
 <a class="fab-wa" href="https://wa.me/34687111168?text=Hola%20JMD%20Traves%C3%ADas%2C%20quiero%20informaci%C3%B3n." target="_blank" rel="noopener" data-wa="generic" aria-label="Escríbenos por WhatsApp al +34 687 11 11 68">
+  <span class="fab-wa__pulse" aria-hidden="true"></span>
   <svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 <div class="toast" role="status" aria-live="polite" data-toast></div>
@@ -206,6 +218,7 @@
 <script src="/assets/js/config.js" defer></script>
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
 <script src="/assets/js/main.js" defer></script>
 
 </body>

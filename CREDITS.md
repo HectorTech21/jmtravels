@@ -28,15 +28,12 @@ Todas las fotografías proceden de [Unsplash](https://unsplash.com) y se usan ba
 
 ## Tipografías
 
-- [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [DM Sans](https://fonts.google.com/specimen/DM+Sans) — Archivos variables Latin alojados localmente, procedentes de Fontsource 5.2.8 (registro npm). Licencia SIL Open Font License 1.1: textos íntegros en `assets/fonts/*-OFL.txt`.
-
-## Ilustración editorial local
-
-`assets/img/journey-editorial.webp`, `assets/img/parcel-editorial.webp` y `assets/img/coast-editorial.webp` son imágenes generadas con IA para esta web. Representan un paisaje aéreo, un paquete con una bolsa de viaje y una costa tropical imaginados: no documentan una ruta, destino, aeronave ni servicio concretos. Se sirven localmente y no sustituyen fotografías de la oficina o del equipo.
+- [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+Grotesque), [DM Sans](https://fonts.google.com/specimen/DM+Sans) y [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono) — Google Fonts, SIL Open Font License 1.1.
 
 ## Librerías
 
-- [GSAP](https://gsap.com) 3.15.0 + ScrollTrigger — véase la licencia incluida en los archivos de la librería.
+- [GSAP](https://gsap.com) 3.15.0 + ScrollTrigger — GreenSock Standard License (uso gratuito).
+- [Lenis](https://github.com/darkroomengineering/lenis) 1.3.26 — MIT.
 
 ## Logotipo
 
