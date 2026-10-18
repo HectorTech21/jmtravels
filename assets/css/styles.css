@@ -354,13 +354,6 @@ body.menu-open .brand__sub { color: var(--gold); }
 .route-card__mid { text-align: center; font-size: .72rem; font-family: var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: #b9c6ea; }
 .route-card__mid strong { display: block; font-size: 1rem; color: var(--gold); letter-spacing: .04em; }
 
-.hero__scroll {
-  position: absolute; left: 50%; bottom: 26px; translate: -50% 0; width: 30px; height: 48px; border-radius: 20px;
-  border: 2px solid rgb(255 255 255 / .5);
-}
-.hero__scroll span { position: absolute; left: 50%; top: 9px; width: 4px; height: 9px; margin-left: -2px; border-radius: 4px; background: #fff; animation: wheel 1.8s var(--ease) infinite; }
-@keyframes wheel { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(16px); opacity: 0; } 100% { opacity: 0; } }
-
 /* ---------- Grano sutil en las secciones oscuras ---------- */
 .departures::after, .quote::after, .real::after, .contact::after, .footer::after {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
@@ -868,7 +861,7 @@ body.menu-open .brand__sub { color: var(--gold); }
   .marquee__track { animation: none; flex-wrap: wrap; justify-content: center; }
   .marquee__track + .marquee__track { display: none; }
   .marquee { transform: none; }
-  .fab-wa__pulse, .route__ring, .hero__scroll span, .eyebrow .dot { display: none; }
+  .fab-wa__pulse, .route__ring, .eyebrow .dot { display: none; }
 }
 
 @media print {
