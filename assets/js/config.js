@@ -9,7 +9,7 @@
 window.JMD_CONFIG = {
   // TODO: dominio definitivo SIN barra final, p. ej. "https://www.tudominio.es".
   // Mientras esté vacío no se emiten canonical/og:url ni URLs en el sitemap.
-  SITE_URL: "",
+  SITE_URL: "https://jmdtravesiasporelmundo.com",
 
   legalName: "JMD Travesías por el Mundo S.L.",
   brandName: "JMD Travesías por el Mundo",
